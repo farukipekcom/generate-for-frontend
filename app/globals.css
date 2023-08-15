@@ -18,10 +18,15 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.menu-item {
+  @apply w-full h-9 flex items-center pl-3 rounded-lg font-semibold text-base;
+}
+.menu-item:hover {
+  @apply bg-secondary text-primary transition-colors ease-in-out duration-500;
+}
+.menu-item-active {
+  @apply bg-secondary text-primary w-full h-9 flex items-center pl-3 rounded-lg font-semibold text-base;
 }
