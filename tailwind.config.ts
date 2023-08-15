@@ -15,6 +15,7 @@ const config: Config = {
         border: "#373A3D",
         headerLight: "#F9FAFB",
         borderLight: "#EAECF0",
+        grayLight: "#687083",
       },
     },
   },

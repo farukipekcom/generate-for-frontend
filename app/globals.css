@@ -25,10 +25,6 @@ body {
 .menu-item-active {
   @apply bg-secondary text-primary w-full h-9 flex items-center pl-3 rounded-lg font-semibold text-base;
 }
-
-.logo-text {
-  @apply fill-primary;
-}
-.logo {
-  @apply fill-primary dark:fill-white;
+.toggle {
+  @apply fill-primary dark:fill-secondary;
 }
