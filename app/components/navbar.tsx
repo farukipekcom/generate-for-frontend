@@ -5,10 +5,10 @@ export default function Navbar() {
   const pathname = usePathname();
   return (
     <div className="flex flex-col items-center mt-12 gap-y-2 h-full">
-      <Link href="/" className={pathname == "/" ? "menu-item-active" : "menu-item"}>
+      <Link href="/" className={pathname === "/" ? "menu-item-active" : "menu-item"}>
         Robots.txt
       </Link>
-      <Link href="/#" className="menu-item">
+      <Link href="/meta-tags" className={pathname === "/meta-tags" ? "menu-item-active" : "menu-item"}>
         Meta Tags
       </Link>
       <Link href="/#" className="menu-item">
