@@ -28,3 +28,6 @@ body {
 .toggle {
   @apply fill-primary dark:fill-secondary;
 }
+.gff {
+  @apply w-1/2 p-6 flex items-center;
+}

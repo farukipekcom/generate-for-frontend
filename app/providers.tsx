@@ -1,10 +1,20 @@
 "use client";
-import {ThemeProvider} from "next-themes";
+import { ThemeProvider } from "next-themes";
 import Header from "./components/header";
-export function Providers({children}: {children: React.ReactNode}) {
+import Search from "./components/search";
+import Toggle from "./components/toggle";
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <Header />
+      <div className="hidden h-20  w-full border-b border-solid  border-borderLight dark:border-border lg:mt-0 lg:flex">
+        <div className="gff border-r border-solid border-borderLight dark:border-border">
+          <Search />
+        </div>
+        <div className="gff flex items-center justify-end">
+          <Toggle />
+        </div>
+      </div>
       {children}
     </ThemeProvider>
   );
