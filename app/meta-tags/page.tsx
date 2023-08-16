@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
 import Input from "../components/input";
+import Select from "../components/select";
+import Textarea from "../components/textarea";
+import Checkbox from "../components/checkbox";
 export default function MetaTags() {
   return (
     <div className="flex ">
@@ -17,8 +20,11 @@ export default function MetaTags() {
           Create effective meta tags for your webpage to enhance SEO and
           optimize the search engine browsing experience.
         </div>
-        <div className="mt-6">
-          <Input name="title" title="Title" />
+        <div className="mt-6 flex flex-col gap-y-3">
+          <Input name="title" title="Title" max={60} />
+          {/* <Select title="Charset" data={data} /> */}
+          <Textarea name="description" title="Description" />
+          <Checkbox name="name" title="Enable viewport" />
         </div>
       </div>
       <div className="h-full w-1/2 p-6">
