@@ -4,11 +4,12 @@ export interface Props {
   title: string;
   type?: string;
   max?: number;
+  onChange: any;
 }
 export default function Inputs(Props: Props) {
-  const { max, name, title, type = "text" } = Props;
+  const { max, name, title, type = "text", onChange } = Props;
   const [inputLength, setInputLength] = useState(0);
-  const onChange = (e: any) => {
+  const onInput = (e: any) => {
     setInputLength(e.target.value.length);
   };
   const high = () => {
@@ -36,7 +37,9 @@ export default function Inputs(Props: Props) {
       <input
         type={type}
         name={name}
-        onChange={(e) => onChange(e)}
+        // onChange={(e) => onChange(e)}
+        onChange={onChange}
+        onInput={onInput}
         className={`inputTextCustom customInput h-10 ${high()}`}
       />
     </div>
