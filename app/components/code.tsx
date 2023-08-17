@@ -17,7 +17,7 @@ export default function Code(Props: Props) {
     }, 1500);
   };
   return (
-    <>
+    <div className="relative mt-6 rounded-lg bg-[#272731] p-6">
       <Highlight className="html">{data}</Highlight>
       <button
         className="absolute right-3 top-2  text-sm font-extrabold text-secondary"
@@ -25,6 +25,6 @@ export default function Code(Props: Props) {
       >
         {copied === true ? "Copied" : "Copy"}
       </button>
-    </>
+    </div>
   );
 }

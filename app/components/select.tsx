@@ -1,9 +1,12 @@
 interface Props {
   title: string;
   data: string[];
+  onChange: any;
+  name: string;
+  id: string;
 }
 export default function Select(Props: Props) {
-  const { title, data } = Props;
+  const { title, data, onChange, name, id } = Props;
   return (
     <div className="selectWrapper relative">
       <label
@@ -13,8 +16,10 @@ export default function Select(Props: Props) {
         {title}
       </label>
       <select
-        id="select"
         className="customInput block h-10 w-full appearance-none"
+        onChange={onChange}
+        name={name}
+        id={name}
       >
         {data.map((item, id) => {
           return (
