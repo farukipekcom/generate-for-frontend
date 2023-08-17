@@ -5,6 +5,7 @@ import Select from "../components/select";
 import Textarea from "../components/textarea";
 import Checkbox from "../components/checkbox";
 export default function MetaTags() {
+  const data = ["1", "2"];
   return (
     <div className="flex ">
       <div className="w-1/2 border-r border-solid border-borderLight p-6 dark:border-border">
@@ -22,7 +23,7 @@ export default function MetaTags() {
         </div>
         <div className="mt-6 flex flex-col gap-y-3">
           <Input name="title" title="Title" max={60} />
-          {/* <Select title="Charset" data={data} /> */}
+          <Select title="Charset" data={data} />
           <Textarea name="description" title="Description" />
           <Checkbox name="name" title="Enable viewport" />
         </div>

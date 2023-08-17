@@ -13,11 +13,11 @@ export default function Inputs(Props: Props) {
   };
   const high = () => {
     return (inputLength >= 25 && inputLength < 45) === true
-      ? "border-2 focus:border-2 focus:border-yellow-400 border-yellow-400 text-yellow-400"
+      ? "warningYellow"
       : (inputLength >= 45 && inputLength <= 60) === true
-      ? "border-2 focus:border-2 focus:border-green-400 border-green-400 text-green-400"
+      ? "warningGreen"
       : inputLength > 60 === true
-      ? "border-2 focus:border-2 focus:border-red-400 border-red-400 text-red-400"
+      ? "warningRed"
       : "";
   };
 
@@ -37,7 +37,7 @@ export default function Inputs(Props: Props) {
         type={type}
         name={name}
         onChange={(e) => onChange(e)}
-        className={`inputTextCustom mt-[6px] h-10 rounded-md border  border-solid p-3 text-base font-medium focus:border-2 focus:outline-none dark:bg-primary  ${high()}`}
+        className={`inputTextCustom customInput h-10 ${high()}`}
       />
     </div>
   );

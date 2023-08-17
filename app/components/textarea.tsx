@@ -14,10 +14,7 @@ export default function Textarea(Props: Props) {
           <span className="absolute right-0 text-sm	font-semibold">12 / 60</span>
         )}
       </label>
-      <textarea
-        name="title"
-        className="dark:border-inputDarkBorder mt-[6px] h-28 w-full rounded-md border border-solid border-[#D1D5DC] p-3 text-base font-medium focus:border-primary focus:outline-none dark:bg-primary  dark:focus:border-secondary"
-      />
+      <textarea name="title" className="customInput h-28 w-full py-3" />
     </div>
   );
 }
