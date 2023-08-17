@@ -20,6 +20,7 @@ export default function Select(Props: Props) {
         onChange={onChange}
         name={name}
         id={name}
+        defaultValue="2"
       >
         {data.map((item, id) => {
           return (

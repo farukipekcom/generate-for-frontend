@@ -27,6 +27,5 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@headlessui/tailwindcss")],
 };
 export default config;

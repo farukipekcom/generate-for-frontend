@@ -3,9 +3,10 @@ interface Props {
   title: string;
   name: string;
   onChange: any;
+  checked: boolean;
 }
 export default function Checkbox(Props: Props) {
-  const { title, name, onChange } = Props;
+  const { title, name, onChange, checked } = Props;
   return (
     <div className="mb-4 mr-4 flex h-10 items-center">
       <input
@@ -14,6 +15,7 @@ export default function Checkbox(Props: Props) {
         type="checkbox"
         onChange={onChange}
         className="h-4 w-4 rounded text-secondary  accent-secondary  dark:bg-yellow-500"
+        checked={checked}
       />
       <label
         htmlFor={name}

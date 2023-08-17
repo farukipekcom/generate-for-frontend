@@ -10,32 +10,36 @@ import Title from "../components/title";
 import Description from "../components/description";
 import charset from "../json/charset.json";
 import robots from "../json/robots.json";
+import { usePathname, useRouter } from "next/navigation";
+
 export default function MetaTags() {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    charset: "",
-    viewport: false,
-    robots: "",
+    charset: charset[0],
+    viewport: true,
+    robots: robots[0],
   });
+  const text = [
+    `<title>${form.title}</title>\n`,
+    `<meta name="description" content="${form.description}">\n`,
+    `<meta charset="${form.charset}">\n`,
+    `<meta name="robots" content="${form.robots}">\n`,
+    `<meta name="viewport" content="width=device-width, initial-scale=1">\n`,
+  ];
   const handleChange = (event: any) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
   const handleChangeCheckbox = (event: any) => {
     setForm({ ...form, [event.target.name]: event.target.checked });
   };
-  const data = `${form.title && `<title>${form.title}</title>\n`}${
-    form.description &&
-    `<meta name="description" content="${form.description}">\n`
-  }${form.charset && `<meta charset="${form.charset}">\n`}${
-    form.viewport === true
-      ? `<meta name="viewport" content="width=device-width, initial-scale=1">\n`
-      : ""
-  }${form.robots && `<meta name="robots" content="${form.robots}">\n`}`;
+  const data = `${form.title && text[0]}${form.description && text[1]}${
+    form.charset && text[2]
+  }${form.robots && text[3]}${form.viewport === true ? text[4] : ""}`;
   return (
-    <div className="flex ">
+    <div className="flex">
       <div className="h-[calc(100vh-80px)] w-1/2 border-r border-solid border-borderLight p-6 dark:border-border">
-        <Breadcrumbs />
+        <Breadcrumbs count={1} page1="Meta Tags" page2="Ikinci" />
         <Title title="Meta Tags Generator" />
         <Description
           description={`Create effective meta tags for your webpage to enhance SEO and
@@ -63,11 +67,11 @@ export default function MetaTags() {
             data={robots}
             onChange={handleChange}
           />
-
           <Checkbox
             name="viewport"
             title="Enable viewport"
             onChange={handleChangeCheckbox}
+            checked={form.viewport}
           />
         </div>
       </div>
