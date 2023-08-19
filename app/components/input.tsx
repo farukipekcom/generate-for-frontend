@@ -5,9 +5,10 @@ export interface Props {
   type?: string;
   max?: number;
   onChange: any;
+  info?: string;
 }
 export default function Inputs(Props: Props) {
-  const { max, name, title, type = "text", onChange } = Props;
+  const { max, name, title, type = "text", onChange, info } = Props;
   const [inputLength, setInputLength] = useState(0);
   const onInput = (e: any) => {
     setInputLength(e.target.value.length);
@@ -42,6 +43,11 @@ export default function Inputs(Props: Props) {
         onInput={onInput}
         className={`inputTextCustom customInput h-10 ${high()}`}
       />
+      {info && (
+        <div className="mt-1 text-sm font-medium dark:text-[#999999]">
+          {info}
+        </div>
+      )}
     </div>
   );
 }

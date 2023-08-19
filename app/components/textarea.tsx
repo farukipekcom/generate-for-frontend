@@ -4,9 +4,10 @@ interface Props {
   title: string;
   onChange: any;
   max?: number;
+  info?: string;
 }
 export default function Textarea(Props: Props) {
-  const { name, title, onChange, max } = Props;
+  const { name, title, onChange, max, info } = Props;
   const [inputLength, setInputLength] = useState(0);
   const onInput = (e: any) => {
     setInputLength(e.target.value.length);
@@ -38,6 +39,11 @@ export default function Textarea(Props: Props) {
         onChange={onChange}
         onInput={onInput}
       />
+      {info && (
+        <div className="mt-1 text-sm font-medium dark:text-[#999999]">
+          {info}
+        </div>
+      )}
     </div>
   );
 }

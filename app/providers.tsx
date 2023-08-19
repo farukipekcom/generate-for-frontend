@@ -7,7 +7,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <Header />
-      <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col lg:ml-[280px]">
         <div className="hidden h-20  w-full border-b border-solid border-borderLight dark:border-border lg:mt-0 lg:flex">
           <div className="gff border-r border-solid border-borderLight dark:border-border">
             <Search />

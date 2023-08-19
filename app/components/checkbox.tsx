@@ -3,7 +3,7 @@ interface Props {
   title: string;
   name: string;
   onChange: any;
-  checked: boolean;
+  checked?: boolean;
 }
 export default function Checkbox(Props: Props) {
   const { title, name, onChange, checked } = Props;

@@ -13,7 +13,7 @@ export default function Header() {
     <header
       className={`${
         mobileMenuActive === true ? "fixed z-50 h-full" : "h-[76px]"
-      } flex w-full min-w-full flex-col border-none bg-headerLight p-[20px] dark:border-border dark:bg-primary  lg:relative lg:h-screen lg:w-[280px] lg:min-w-[280px] lg:border-r lg:border-solid lg:border-borderLight lg:bg-headerLight lg:p-6 lg:pt-8`}
+      } flex w-full min-w-full flex-col border-none bg-headerLight p-[20px] dark:border-border dark:bg-primary  lg:fixed lg:h-screen lg:w-[280px] lg:min-w-[280px] lg:border-r lg:border-solid lg:border-borderLight lg:bg-headerLight lg:p-6 lg:pt-8`}
     >
       <Link href="/">
         <svg
