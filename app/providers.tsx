@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import Header from "./components/header";
 import Search from "./components/search";
 import Toggle from "./components/toggle";
+import Footer from "./components/footer";
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
@@ -17,6 +18,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <div className="">{children}</div>
+        <Footer />
       </div>
     </ThemeProvider>
   );

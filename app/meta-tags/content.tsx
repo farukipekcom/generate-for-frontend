@@ -43,10 +43,7 @@ export default function Content() {
       <div className="h-[calc(100vh-80px)] w-1/2 border-r border-solid border-borderLight p-6 dark:border-border">
         <Breadcrumbs count={1} page1="Meta Tags" page2="Ikinci" />
         <Title title="Meta Tags Generator" />
-        <Description
-          description={`Create effective meta tags for your webpage to enhance SEO and
-          optimize the search engine browsing experience.`}
-        />
+        <Description description="The Meta Tags Generator is a powerful tool designed for developers seeking to enhance their website's online presence. By effortlessly creating custom meta tags, including meta descriptions and meta titles, this generator empowers you to optimize your web pages for better search engine visibility. Elevate your SEO strategy with accurate and tailored meta tags, provided by our user-friendly Meta Tags Generator. Boost your website's performance and capture your audience's attention effectively." />
         <div className="mt-6 flex flex-col gap-y-3">
           <Input name="title" title="Title" onChange={handleChange} max={60} />
           <Textarea
@@ -81,7 +78,9 @@ export default function Content() {
       <div className="h-full w-1/2 p-6">
         <Title title="Code" />
         <Description
-          description={`Insert the following code into the {"<head>"} section of your webpage.`}
+          description={
+            "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
+          }
         />
         <Code data={data} />
       </div>

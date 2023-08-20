@@ -7,7 +7,6 @@ export default function Header() {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
   const onchangeActive = () => {
     setMobileMenuActive((prevmobileMenuActive) => !prevmobileMenuActive);
-    console.log(mobileMenuActive);
   };
   return (
     <header
@@ -43,7 +42,10 @@ export default function Header() {
           <Search />
         </div>
       )}
-      <Navbar mobileMenuActive={mobileMenuActive} />
+      <Navbar
+        mobileMenuActive={mobileMenuActive}
+        onchangeActive={onchangeActive}
+      />
       <Link
         href="https://www.buymeacoffee.com/farukipekcom"
         target="_blank"

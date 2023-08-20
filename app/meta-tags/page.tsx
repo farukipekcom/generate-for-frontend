@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Content from "./content";
 export const metadata: Metadata = {
-  title: "Meta Tags Generator",
+  title: "Meta Tag Generator",
   description:
-    "Create effective meta tags for your webpage to enhance SEO and optimize the search engine browsing experience.",
+    "Create precise meta tags with our Meta Tags Generator for optimal SEO impact. Enhance meta descriptions and titles effortlessly.",
 };
 export default function MetaTags() {
   return (
