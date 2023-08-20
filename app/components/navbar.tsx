@@ -26,7 +26,7 @@ export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
             Meta Tags
           </Link>
         </li>
-        <li className="relative ">
+        {/* <li className="relative ">
           <Link
             href="/twitter"
             className={
@@ -112,7 +112,7 @@ export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
               </li>
             </ul>
           )}
-        </li>
+        </li> */}
       </ul>
     </div>
   );
