@@ -2,6 +2,16 @@ import Card from "./components/card";
 export default function Home() {
   return (
     <main className="p-6">
+      <h1 className="mb-3 text-[30px] font-bold">Generate for Frontend</h1>
+      <h2 className="mb-2 text-xl font-semibold">
+        Efficient Code Generator Tool for Developers: Boost Your Productivity!
+      </h2>
+      <p className="mb-6 text-base font-normal">
+        Generate for Frontend Tool is here to rescue you from the mundane. By
+        automating the generation of code segments, templates, and patterns, we
+        free you to focus on what truly matters – transforming your innovative
+        ideas into reality.
+      </p>
       <div className=" flex flex-wrap gap-6">
         <div className="group w-[calc(50%-12px)]">
           <Card
