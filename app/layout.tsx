@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 const title = "Generate for Frontend";
 const description =
@@ -65,7 +66,10 @@ export default function RootLayout({
       <body
         className={`flex ${inter.className} flex flex-col bg-white dark:bg-primary lg:flex-row`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Analytics />
+        </Providers>
       </body>
     </html>
   );
