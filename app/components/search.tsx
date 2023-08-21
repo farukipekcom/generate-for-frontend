@@ -98,7 +98,7 @@ export default function Search({ currentMode, changeContactAppMode }: any) {
       )}
       {filteredData.length === 0 && (
         <div
-          className="dark: absolute left-[-24px] top-[60px] flex w-[calc(100%+48px)] flex-col gap-y-3 bg-[#444454] bg-[#f1f1f1] p-3"
+          className="dark: absolute left-[-24px] top-[60px] flex w-[calc(100%+48px)] flex-col gap-y-3 bg-[#f1f1f1] p-3 dark:bg-[#444454]"
           ref={innerBorderRef}
         >
           <div className="text-base font-semibold">Not Found!</div>
