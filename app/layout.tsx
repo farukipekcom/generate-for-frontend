@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     title,
     description,
     site: "@farukipekcom",
+    images: ["https://generateforfrontend.com/open-graph.jpg"],
   },
   robots: {
     index: true,
