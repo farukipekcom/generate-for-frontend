@@ -21,6 +21,14 @@ export const metadata: Metadata = {
     url,
     siteName: title,
     locale,
+    images: [
+      {
+        url: "https://generateforfrontend.com/open-graph.jpg",
+        width: 1200,
+        height: 627,
+        alt: "Generate for Frontend",
+      },
+    ],
     type: "website",
   },
   twitter: {
