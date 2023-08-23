@@ -1,7 +1,7 @@
 import Card from "./components/card";
 export default function Home() {
   return (
-    <main className="p-6">
+    <main className="pl-5 pr-5">
       <h1 className="mb-3 text-[30px] font-bold">Generate for Frontend</h1>
       <h2 className="mb-2 text-xl font-semibold">
         Efficient Code Generator Tool for Developers: Boost Your Productivity!

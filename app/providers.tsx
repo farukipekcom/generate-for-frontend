@@ -8,16 +8,16 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <Header />
-      <div className="flex w-full flex-col lg:ml-[280px]">
-        <div className="hidden h-20  w-full border-b border-solid border-borderLight dark:border-border lg:mt-0 lg:flex">
-          <div className="gff border-r border-solid border-borderLight dark:border-border">
+      <div className=" flex w-full flex-col lg:ml-[300px] lg:mt-0">
+        <div className="rounded-normal mt-0 hidden h-20 w-full bg-primary lg:flex">
+          <div className="flex w-1/2 items-center p-5 ">
             <Search />
           </div>
-          <div className="gff flex items-center justify-end">
+          <div className="flex  w-1/2 items-center  justify-end p-6">
             <Toggle />
           </div>
         </div>
-        <div className="">{children}</div>
+        <div className="mt-[92px] lg:mt-6">{children}</div>
         <Footer />
       </div>
     </ThemeProvider>
