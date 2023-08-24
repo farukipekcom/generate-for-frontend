@@ -17,19 +17,34 @@ body {
 } */
 
 .menu-item {
-  @apply rounded-small flex h-10 w-full items-center py-2 pl-3 text-base font-semibold text-white;
+  @apply flex h-10 w-full items-center rounded-small py-2 pl-3 text-base font-semibold text-white;
 }
 .menu-item:hover {
   @apply bg-secondary text-white transition-colors duration-500 ease-in-out;
 }
 .menu-item-active {
-  @apply rounded-small flex h-10 w-full items-center bg-secondary pl-3 text-base font-semibold text-white;
+  @apply flex h-10 w-full items-center rounded-small bg-secondary pl-3 text-base font-semibold text-white;
 }
 .toggle {
   @apply fill-primary dark:fill-secondary;
 }
 .gff {
   @apply flex w-1/2 items-center p-6;
+}
+.pages > a:nth-child(1) > div,
+.pages > a:nth-child(1) > div > svg > g > path {
+  background-color: #b7dae2 !important;
+  stroke: #539bab !important;
+}
+.pages > a:nth-child(2) > div,
+.pages > a:nth-child(2) > div > svg > g > path {
+  background-color: #e5d0cf !important;
+  stroke: #c88683 !important;
+}
+.pages > a:nth-child(3) > div,
+.pages > a:nth-child(3) > div > svg > g > path {
+  background-color: #cfe5d1 !important;
+  stroke: #519056 !important;
 }
 
 .selectWrapper::after {

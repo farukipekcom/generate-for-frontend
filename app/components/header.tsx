@@ -8,15 +8,13 @@ export default function Header() {
   const onchangeActive = () => {
     setMobileMenuActive((prevmobileMenuActive) => !prevmobileMenuActive);
   };
-  console.log(mobileMenuActive);
-
   return (
     <header
       className={`${
         mobileMenuActive === true
           ? "fixed z-50 h-[calc(100%-40px)]"
           : "h-[68px]"
-      } rounded-normal fixed flex w-[calc(100%-40px)] flex-col bg-primary p-4 pt-4 lg:h-[calc(100vh-40px)] lg:w-[280px] lg:min-w-[280px]`}
+      } fixed flex w-[calc(100%-40px)] flex-col rounded-normal bg-primary p-4 pt-4 lg:h-[calc(100vh-40px)] lg:w-[280px] lg:min-w-[280px]`}
     >
       <Link href="/" className="w-max">
         <svg
