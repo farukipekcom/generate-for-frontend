@@ -13,17 +13,21 @@ export default function Textarea(Props: Props) {
     setInputLength(e.target.value.length);
   };
   const high = () => {
-    return (inputLength >= 80 && inputLength < 120) === true
+    return (max !== undefined &&
+      inputLength / max >= 0.45 &&
+      inputLength / max < 0.75) === true
       ? "warningYellow"
-      : (inputLength >= 120 && inputLength <= 160) === true
+      : (max !== undefined &&
+          inputLength / max >= 0.75 &&
+          inputLength / max <= 1) === true
       ? "warningGreen"
-      : inputLength > 160 === true
+      : max != undefined && inputLength > max === true
       ? "warningRed"
       : "";
   };
   return (
     <div className="flex flex-col">
-      <label htmlFor={name} className="relative">
+      <label htmlFor={name} className="relative text-gray_dark dark:text-gray">
         {title}
         {max && (
           <span
@@ -35,7 +39,7 @@ export default function Textarea(Props: Props) {
       </label>
       <textarea
         name={name}
-        className={`inputTextCustom customInput h-28 w-full py-3 ${high()}`}
+        className="inputTextCustom customInput h-28 w-full py-3"
         onChange={onChange}
         onInput={onInput}
       />

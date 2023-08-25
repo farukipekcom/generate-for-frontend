@@ -3,7 +3,7 @@ export interface Props {
   name: string;
   title: string;
   type?: string;
-  max?: number;
+  max?: number | undefined;
   onChange: any;
   info?: string;
 }
@@ -14,22 +14,26 @@ export default function Inputs(Props: Props) {
     setInputLength(e.target.value.length);
   };
   const high = () => {
-    return (inputLength >= 25 && inputLength < 45) === true
+    return (max !== undefined &&
+      inputLength / max >= 0.45 &&
+      inputLength / max < 0.75) === true
       ? "warningYellow"
-      : (inputLength >= 45 && inputLength <= 60) === true
+      : (max !== undefined &&
+          inputLength / max >= 0.75 &&
+          inputLength / max <= 1) === true
       ? "warningGreen"
-      : inputLength > 60 === true
+      : max != undefined && inputLength > max === true
       ? "warningRed"
       : "";
   };
 
   return (
-    <div className="flex flex-col">
-      <label htmlFor={name} className="relative">
+    <div className="flex flex-col ">
+      <label htmlFor={name} className="relative text-gray_dark dark:text-gray">
         {title}
         {max && (
           <span
-            className={`absolute right-0 text-sm	font-semibold ${high()} border-none`}
+            className={`absolute right-0 border-none	text-sm font-semibold ${high()} `}
           >
             {inputLength} / {max}
           </span>
@@ -38,10 +42,9 @@ export default function Inputs(Props: Props) {
       <input
         type={type}
         name={name}
-        // onChange={(e) => onChange(e)}
         onChange={onChange}
         onInput={onInput}
-        className={`inputTextCustom customInput h-10 ${high()}`}
+        className="customInput"
       />
       {info && (
         <div className="mt-1 text-sm font-medium dark:text-[#999999]">

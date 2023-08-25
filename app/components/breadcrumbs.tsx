@@ -14,12 +14,15 @@ export default function Breadcrumbs(Props: Props) {
   const pathname = usePathname();
   const pathList = pathname.split("/");
   return (
-    <div className="flex gap-x-2 text-sm font-medium text-[#495466] dark:text-secondary">
+    <div className="flex items-center gap-x-2 text-sm font-medium text-secondary dark:text-white">
       <Link href="/">Home</Link>
       {page1.length > 0 && count === 1 ? (
         <>
-          <span>{">"}</span>
-          <Link href={pathList[1]} className="text-primary dark:text-secondary">
+          <span className="text-gray dark:text-gray">{">"}</span>
+          <Link
+            href={pathList[1]}
+            className="rounded-small bg-green_light px-2 py-1 text-primary dark:text-secondary"
+          >
             {page1}
           </Link>
         </>

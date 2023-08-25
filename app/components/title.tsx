@@ -5,7 +5,7 @@ interface Props {
 export default function Title(Props: Props) {
   const { title } = Props;
   return (
-    <div className="mt-2 text-[28px] font-bold text-primary dark:text-white">
+    <div className="mt-6 text-[30px] font-bold text-primary dark:text-white">
       {title}
     </div>
   );

@@ -46,6 +46,11 @@ body {
   background-color: #cfe5d1 !important;
   stroke: #519056 !important;
 }
+.customShadow {
+  box-shadow:
+    0px 2px 4px 0px rgba(0, 0, 0, 0.01),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+}
 
 .selectWrapper::after {
   background: url("/down-arrow.svg") no-repeat;
@@ -56,20 +61,17 @@ body {
   width: 12px;
   height: 12px;
 }
-.inputTextCustom {
-  @apply text-primary dark:text-white !important;
-}
 .customInput {
-  @apply mt-[6px] rounded-md  border border-solid border-inputBorder px-3 text-base font-medium outline-none focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-inputDarkBorder dark:bg-primary dark:focus:ring-inputDarkBorder;
+  @apply mt-[6px] h-10 rounded-small border border-solid border-inputBorder bg-white pl-3 outline-none focus:border-primary dark:border-inputDarkBorder dark:bg-dark_input_bg focus:dark:border-white;
 }
 .warningRed {
-  @apply border-red-400 text-red-400 focus:border-red-400 focus:ring-red-400 dark:border-red-400 dark:focus:ring-red-400;
+  @apply text-red-400;
 }
 .warningYellow {
-  @apply border-amber-400 text-amber-400 focus:border-amber-400 focus:ring-amber-400 dark:border-amber-400 dark:focus:ring-amber-400;
+  @apply text-yellow-500;
 }
 .warningGreen {
-  /* @apply border-green-400 text-green-400 focus:border-green-400 focus:ring-green-400 dark:border-green-400 dark:focus:ring-green-400; */
+  @apply text-[#32da34];
 }
 
 /* -------------------------------------------------------------------------------------------- */

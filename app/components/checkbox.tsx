@@ -8,13 +8,13 @@ interface Props {
 export default function Checkbox(Props: Props) {
   const { title, name, onChange, checked } = Props;
   return (
-    <div className="mb-4 mr-4 flex h-10 items-center">
+    <div className="flex h-10 items-center">
       <input
         id={name}
         name={name}
         type="checkbox"
         onChange={onChange}
-        className="h-4 w-4 rounded text-secondary  accent-secondary  dark:bg-yellow-500"
+        className="h-4 w-4 rounded text-secondary  accent-secondary  dark:bg-yellow-500 dark:accent-white"
         checked={checked}
       />
       <label

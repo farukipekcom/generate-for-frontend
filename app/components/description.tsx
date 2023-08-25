@@ -6,7 +6,7 @@ export default function Description(Props: Props) {
   const { description } = Props;
   return (
     <div
-      className="mt-3 text-base text-primary dark:text-gray-100"
+      className="mt-4 text-base text-primary dark:text-white"
       dangerouslySetInnerHTML={{ __html: description }}
     ></div>
   );

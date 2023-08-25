@@ -39,12 +39,12 @@ export default function Content() {
     form.viewport === true ? text[5] : ""
   }`;
   return (
-    <div className="flex">
-      <div className="h-[calc(100vh-80px)] w-1/2 border-r border-solid border-borderLight p-6 dark:border-border">
+    <div className="flex flex-col md:flex-col lg:flex-col xl:flex-row">
+      <div className="pl-1 pr-1 md:w-full lg:w-full lg:p-6 xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:dark:border-border">
         <Breadcrumbs count={1} page1="Meta Tags" page2="Ikinci" />
         <Title title="Meta Tags Generator" />
-        <Description description="The Meta Tags Generator is a powerful tool designed for developers seeking to enhance their website's online presence. By effortlessly creating custom meta tags, including meta descriptions and meta titles, this generator empowers you to optimize your web pages for better search engine visibility. Elevate your SEO strategy with accurate and tailored meta tags, provided by our user-friendly Meta Tags Generator. Boost your website's performance and capture your audience's attention effectively." />
-        <div className="mt-6 flex flex-col gap-y-3">
+        <Description description="A meta tags code generator is a tool that helps you create and manage the meta tags for your website. Meta tags are HTML tags that provide information about your website to search engines and other web browsers. </br></br>They can be used to improve the visibility of your website in search results, and to provide additional information about your website to visitors." />
+        <div className="mt-9 flex flex-col gap-y-6">
           <Input name="title" title="Title" onChange={handleChange} max={60} />
           <Textarea
             name="description"
@@ -75,7 +75,7 @@ export default function Content() {
           />
         </div>
       </div>
-      <div className="h-full w-1/2 p-6">
+      <div className="lg:p-6 lg:pt-0 xl:mt-[28px] xl:w-1/2">
         <Title title="Code" />
         <Description
           description={

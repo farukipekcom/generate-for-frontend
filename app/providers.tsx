@@ -8,8 +8,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <Header />
-      <div className=" flex w-full flex-col lg:ml-[300px] lg:mt-0">
-        <div className="rounded-normal mt-0 hidden h-20 w-full bg-primary lg:flex">
+      <div className="flex w-full flex-col lg:ml-[300px] lg:mt-0">
+        <div className="mt-0 hidden h-20 w-full rounded-normal bg-primary lg:flex">
           <div className="flex w-1/2 items-center p-5 ">
             <Search />
           </div>
@@ -17,7 +17,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             <Toggle />
           </div>
         </div>
-        <div className="mt-[92px] lg:mt-6">{children}</div>
+        <div className="mt-28 lg:mb-0 lg:mt-0 ">{children}</div>
         <Footer />
       </div>
     </ThemeProvider>
