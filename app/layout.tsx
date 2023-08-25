@@ -67,7 +67,12 @@ export const metadata: Metadata = {
     canonical: url,
   },
 };
-
+const jsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  name: "Generate for Frontend",
+  url: "https://generateforfrontend.com",
+};
 export default function RootLayout({
   children,
 }: {
@@ -82,6 +87,10 @@ export default function RootLayout({
           {children}
           <Analytics />
         </Providers>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
