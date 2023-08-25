@@ -63,6 +63,9 @@ export const metadata: Metadata = {
   ],
   manifest: "/icons/site.webmanifest",
   themeColor: "#ffffff",
+  alternates: {
+    canonical: url,
+  },
 };
 
 export default function RootLayout({
