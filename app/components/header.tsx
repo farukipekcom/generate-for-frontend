@@ -17,8 +17,8 @@ export default function Header() {
       className={`${
         mobileMenuActive === true
           ? "fixed z-50 flex h-[calc(100%-0px)] flex-col justify-between  bg-white pb-5 pt-5 dark:bg-secondary lg:pt-0"
-          : " z-50 bg-white pt-5 dark:bg-secondary lg:p-0"
-      } fixed flex w-[calc(100%-40px)] flex-col lg:h-[calc(100vh-20px)] lg:w-[280px] lg:min-w-[280px]`}
+          : "z-50 bg-white pt-5 dark:bg-secondary lg:p-0"
+      } fixed flex w-[calc(100%-40px)] flex-col lg:h-[calc(100vh-40px)] lg:w-[280px] lg:min-w-[280px]`}
     >
       <div className="flex h-[calc(100%-0px)] flex-col rounded-normal bg-primary p-4">
         <div className="flex items-center justify-between">
@@ -38,7 +38,7 @@ export default function Header() {
         )}
         <Navbar
           mobileMenuActive={mobileMenuActive}
-          onchangeActive={onchangeActive}
+          onchangeActive={() => setMobileMenuActive(false)}
         />
         <div className="relative flex items-center md:justify-center">
           <Link
