@@ -22,7 +22,11 @@ export default function Header() {
     >
       <div className="flex h-[calc(100%-0px)] flex-col rounded-normal bg-primary p-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="w-max" onClick={onchangeActive}>
+          <Link
+            href="/"
+            className="w-max"
+            onClick={() => setMobileMenuActive(false)}
+          >
             <Logo />
           </Link>
           <Menu onchangeActive={onchangeActive} />
