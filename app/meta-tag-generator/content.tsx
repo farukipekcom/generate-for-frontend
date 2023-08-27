@@ -87,7 +87,7 @@ export default function Content() {
   return (
     <>
       <div className="flex flex-col md:flex-col lg:flex-col xl:flex-row">
-        <div className="pl-1 pr-1 md:w-full lg:w-full lg:p-6 xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:dark:border-border">
+        <div className="pl-1 pr-1 md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:dark:border-border">
           <Breadcrumbs count={1} page1="Meta Tags" page2="Ikinci" />
           <Title title="Meta Tags Generator" />
           <Description description="A meta tags code generator is a tool that helps you create and manage the meta tags for your website. Meta tags are HTML tags that provide information about your website to search engines and other web browsers. </br></br>They can be used to improve the visibility of your website in search results, and to provide additional information about your website to visitors." />

@@ -10,6 +10,9 @@ const config: Config = {
   important: true,
   theme: {
     extend: {
+      height: {
+        calc: "calc(100vh - 244px)",
+      },
       borderRadius: {
         normal: "16px",
         small: "6px",

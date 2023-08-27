@@ -5,8 +5,8 @@ import Underline from "./components/icons/underline";
 import pages from "./json/pages.json";
 export default function Home() {
   return (
-    <main className="lg:pl-5 lg:pr-5">
-      <div className="hidden gap-x-2 lg:mt-6 lg:flex lg:items-center">
+    <main className="">
+      <div className="hidden gap-x-2 lg:flex lg:items-center">
         <Signal />
         <h1 className="relative text-2xl font-semibold tracking-tight text-primary dark:text-white">
           Generate for Frontend
