@@ -15,7 +15,17 @@
 body {
   color: rgb(var(--foreground-rgb));
 } */
-
+.afterarrow {
+  @apply text-gray dark:text-gray;
+}
+.afterarrow::after {
+  content: ">";
+  margin-left: 8px;
+  @apply text-gray dark:text-gray;
+}
+.afterarrow:nth-last-child(1)::after {
+  content: "";
+}
 .menu-item {
   @apply flex h-10 w-full items-center rounded-small py-2 pl-3 text-base font-semibold text-white;
 }
