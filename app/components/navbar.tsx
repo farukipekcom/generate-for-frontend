@@ -10,6 +10,8 @@ export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
   const router = useRouter();
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("");
+  console.log(pathname, "pathname");
+
   return (
     <div
       className={`${
@@ -19,18 +21,57 @@ export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
       <ul className="flex w-full flex-col gap-y-2">
         {pages.map((item) => {
           return (
-            <li key={item.id}>
+            <li key={item.id} className="relative">
               <Link
-                href="/meta-tag-generator"
+                href={item.link}
                 className={
-                  pathname === "/meta-tag-generator"
-                    ? "menu-item-active"
-                    : "menu-item"
+                  pathname === item.link ? "menu-item-active" : "menu-item"
                 }
                 onClick={onchangeActive}
               >
                 {item.title}
               </Link>
+              {item.pages !== undefined && (
+                <div
+                  className="absolute right-1 top-2 z-0 flex h-6 w-6 cursor-pointer items-center justify-center"
+                  onClick={() => {
+                    setActive(!active);
+                    setSelected("twitter");
+                  }}
+                >
+                  <DownArrow />
+                </div>
+              )}
+              {/* pathname === item.link && */}
+              {(selected === "twitter" &&
+                active === true &&
+                item.pages !== undefined &&
+                item.pages?.length > 0) ||
+                (pathname.includes(item.link) && (
+                  <ul
+                    className={`ml-4 mt-3 flex w-[calc(100%-28px)] flex-col gap-y-2 border-l border-solid border-secondary ${
+                      item.pages === undefined && "hidden"
+                    }`}
+                  >
+                    {item.pages?.map((page) => {
+                      return (
+                        <li key={page.id}>
+                          <Link
+                            href={page.link}
+                            className={
+                              pathname === page.link
+                                ? "dropdown-menu-item-active"
+                                : "dropdown-menu-item"
+                            }
+                            onClick={onchangeActive}
+                          >
+                            {page.title}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ))}
             </li>
           );
         })}

@@ -19,11 +19,18 @@ body {
 .menu-item {
   @apply flex h-10 w-full items-center rounded-small py-2 pl-3 text-base font-semibold text-white;
 }
-.menu-item:hover {
+.dropdown-menu-item {
+  @apply ml-3 flex h-8 w-full items-center rounded-small py-1 pl-2 text-sm font-semibold text-white;
+}
+.menu-item:hover,
+.dropdown-menu-item:hover {
   @apply bg-secondary text-white transition-colors duration-500 ease-in-out;
 }
 .menu-item-active {
   @apply flex h-10 w-full items-center rounded-small bg-secondary pl-3 text-base font-semibold text-white;
+}
+.dropdown-menu-item-active {
+  @apply ml-3 flex h-8 w-full items-center rounded-small bg-secondary pl-2 text-sm font-semibold text-white;
 }
 .toggle {
   @apply fill-primary dark:fill-secondary;

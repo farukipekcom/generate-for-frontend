@@ -86,57 +86,48 @@ export default function Content() {
   }`;
   return (
     <>
-      <div className="flex flex-col md:flex-col lg:flex-col xl:flex-row">
-        <div className="pl-1 pr-1 md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:dark:border-border">
-          <Breadcrumbs count={1} page1="Meta Tags" page2="Ikinci" />
-          <Title title="Meta Tags Generator" />
-          <Description description="A meta tags code generator is a tool that helps you create and manage the meta tags for your website. Meta tags are HTML tags that provide information about your website to search engines and other web browsers. </br></br>They can be used to improve the visibility of your website in search results, and to provide additional information about your website to visitors." />
-          <div className="mt-9 flex flex-col gap-y-6">
-            <Input
-              name="title"
-              title="Title"
-              onChange={handleChange}
-              max={60}
-            />
-            <Textarea
-              name="description"
-              title="Description"
-              onChange={handleChange}
-              max={160}
-            />
-            <Input name="author" title="Author" onChange={handleChange} />
-            <Select
-              name="charset"
-              id="charset"
-              title="Charset"
-              data={charset}
-              onChange={handleChange}
-            />
-            <Select
-              name="robots"
-              id="robots"
-              title="Robots?"
-              data={robots}
-              onChange={handleChange}
-            />
-            <Checkbox
-              name="viewport"
-              title="Enable viewport"
-              onChange={handleChangeCheckbox}
-              checked={form.viewport}
-            />
-          </div>
-        </div>
-        <div className="lg:p-6 lg:pt-0 xl:mt-[28px] xl:w-1/2">
-          <Title title="Code" />
-          <Description
-            description={
-              "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
-            }
+      <div className="md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:pr-5 xl:dark:border-border">
+        <Breadcrumbs count={1} page1="Meta Tags" page2="Ikinci" />
+        <Title title="Meta Tags Generator" />
+        <Description description="A meta tags code generator is a tool that helps you create and manage the meta tags for your website. Meta tags are HTML tags that provide information about your website to search engines and other web browsers. </br></br>They can be used to improve the visibility of your website in search results, and to provide additional information about your website to visitors." />
+        <div className="mt-9 flex flex-col gap-y-6">
+          <Input name="title" title="Title" onChange={handleChange} max={60} />
+          <Textarea
+            name="description"
+            title="Description"
+            onChange={handleChange}
+            max={160}
           />
-          <Code data={data} />
+          <Input name="author" title="Author" onChange={handleChange} />
+          <Select
+            name="charset"
+            id="charset"
+            title="Charset"
+            data={charset}
+            onChange={handleChange}
+          />
+          <Select
+            name="robots"
+            id="robots"
+            title="Robots?"
+            data={robots}
+            onChange={handleChange}
+          />
+          <Checkbox
+            name="viewport"
+            title="Enable viewport"
+            onChange={handleChangeCheckbox}
+            checked={form.viewport}
+          />
         </div>
       </div>
+      <Code
+        data={data}
+        title="Code"
+        description={
+          "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
+        }
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

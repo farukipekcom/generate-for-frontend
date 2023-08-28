@@ -5,7 +5,7 @@ import Underline from "./components/icons/underline";
 import pages from "./json/pages.json";
 export default function Home() {
   return (
-    <main className="">
+    <>
       <div className="hidden gap-x-2 lg:flex lg:items-center">
         <Signal />
         <h1 className="relative text-2xl font-semibold tracking-tight text-primary dark:text-white">
@@ -39,6 +39,6 @@ export default function Home() {
           );
         })}
       </div>
-    </main>
+    </>
   );
 }

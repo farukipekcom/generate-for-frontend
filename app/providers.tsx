@@ -17,7 +17,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
             <Toggle />
           </div>
         </div>
-        <div className="mt-28 lg:mb-0 lg:mt-5 lg:pl-5 lg:pr-5">{children}</div>
+        <main className="ml-1 mr-1 mt-28 lg:m-0 lg:mt-8 xl:ml-5 xl:mr-0">
+          {children}
+        </main>
         <Footer />
       </div>
     </ThemeProvider>
