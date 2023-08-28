@@ -10,53 +10,8 @@ import Title from "../components/title";
 import Description from "../components/description";
 import charset from "../json/charset.json";
 import robots from "../json/robots.json";
+import Jsonld from "../components/jsonld";
 export default function Content() {
-  const jsonLd = [
-    {
-      "@context": "https://schema.org/",
-      "@type": "Article",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": "https://generateforfrontend.com/",
-      },
-      headline: "Generate for Frontend",
-      description:
-        "Produce the most beneficial meta tags for your webpage to enhance SEO and enrich the experience for search engine users.",
-      image: "http://generateforfrontend.com/open-graph.jpg",
-      author: {
-        "@type": "Person",
-        name: "Faruk Ipek",
-        url: "https://farukipek.com/",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: "",
-        logo: {
-          "@type": "ImageObject",
-          url: "",
-        },
-      },
-      datePublished: "2023-08-24",
-    },
-    {
-      "@context": "https://schema.org/",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://generateforfrontend.com/",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Meta Tag Generator",
-          item: "https://generateforfrontend.com/meta-tag-generator",
-        },
-      ],
-    },
-  ];
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -84,9 +39,31 @@ export default function Content() {
   }${form.charset && text[3]}${form.robots && text[4]}${
     form.viewport === true ? text[5] : ""
   }`;
+  console.log(
+    Jsonld({
+      title: "Faruk",
+      description: "Aciklama",
+      datePublished: "2023-08-24",
+      dateModified: "2023-08-24",
+      link: "https://generateforfrontend.com/meta-tag-generator",
+      breadcrumb: [
+        {
+          position: 1,
+          name: "Home",
+          item: "https://generateforfrontend.com/",
+        },
+        {
+          position: 2,
+          name: "Meta Tag Generator",
+          item: "https://generateforfrontend.com/meta-tag-generator",
+        },
+      ],
+    }),
+  );
+
   return (
     <>
-      <div className="md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:pr-5 xl:dark:border-border">
+      <div className="xl:pr- md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:dark:border-border">
         <Breadcrumbs count={1} page1="Meta Tags" page2="Ikinci" />
         <Title title="Meta Tags Generator" />
         <Description description="A meta tags code generator is a tool that helps you create and manage the meta tags for your website. Meta tags are HTML tags that provide information about your website to search engines and other web browsers. </br></br>They can be used to improve the visibility of your website in search results, and to provide additional information about your website to visitors." />
@@ -130,7 +107,30 @@ export default function Content() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            Jsonld({
+              title: "Generate for Frontend",
+              description:
+                "A meta tags code generator is a tool that helps you create and manage the meta tags for your website.",
+              datePublished: "2023-08-24",
+              dateModified: "2023-08-27",
+              link: "https://generateforfrontend.com/meta-tag-generator",
+              breadcrumb: [
+                {
+                  position: 1,
+                  name: "Home",
+                  item: "https://generateforfrontend.com/",
+                },
+                {
+                  position: 2,
+                  name: "Meta Tag Generator",
+                  item: "https://generateforfrontend.com/meta-tag-generator",
+                },
+              ],
+            }),
+          ),
+        }}
       />
     </>
   );

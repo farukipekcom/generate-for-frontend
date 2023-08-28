@@ -39,6 +39,21 @@ export default function Home() {
           );
         })}
       </div>
+      {/* <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "WebSite",
+            url: "https://generateforfrontend.com/",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "{search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          }),
+        }}
+      /> */}
     </>
   );
 }

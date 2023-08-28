@@ -2,9 +2,51 @@
   {
     "id": "01.",
     "title": "Meta Tag Generator",
-    "description": "Produce the most beneficial meta tags for your webpage to enhance SEO and enrich the experience for search engine users.",
+    "description": "A meta tags code generator is a tool that helps you create and manage the meta tags for your website.",
     "link": "/meta-tag-generator",
     "color": "#BED9E1",
     "colorDark": "#6599A9"
+  },
+  {
+    "id": "02.",
+    "title": "Twitter Card Generator",
+    "description": "Produce the most beneficial meta tags for your webpage to enhance SEO and enrich the experience for search engine users.",
+    "link": "/twitter-card-generator",
+    "color": "#E5D0CF",
+    "colorDark": "#C88683",
+    "pages": [
+      {
+        "id": "01.",
+        "title": "App",
+        "description": "App",
+        "link": "/twitter-card-generator/app",
+        "color": "#E5D0CF",
+        "colorDark": "#C88683"
+      },
+      {
+        "id": "02.",
+        "title": "Player",
+        "description": "Player",
+        "link": "/twitter-card-generator/player",
+        "color": "#E5D0CF",
+        "colorDark": "#C88683"
+      },
+      {
+        "id": "03.",
+        "title": "Summary",
+        "description": "Summary",
+        "link": "/twitter-card-generator/summary",
+        "color": "#E5D0CF",
+        "colorDark": "#C88683"
+      },
+      {
+        "id": "04.",
+        "title": "Summary With Large Image",
+        "description": "Summary With Large Image",
+        "link": "/twitter-card-generator/summary-with-large-image",
+        "color": "#E5D0CF",
+        "colorDark": "#C88683"
+      }
+    ]
   }
 ]
