@@ -9,17 +9,14 @@ interface Props {
     link?: string;
   }[];
 }
-
 export default function Breadcrumbs(Props: Props) {
   const { items } = Props;
   const pathname = usePathname();
-  console.log("XX", pathname);
-
   return (
     <div className="flex items-center gap-x-2 text-sm font-medium text-secondary dark:text-white">
       {items.map((item: any, index: number) => {
         return (
-          <div className="afterarrow text-primary dark:text-white">
+          <div className="afterarrow text-primary dark:text-white" key={index}>
             <Link
               href={`https://generateforfrontend.com` + item.link}
               className={`${

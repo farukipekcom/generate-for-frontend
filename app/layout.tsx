@@ -85,7 +85,7 @@ export default function RootLayout({
       >
         <Providers>
           {children}
-          <Analytics />
+          <Analytics debug={false} />
         </Providers>
         <script
           type="application/ld+json"

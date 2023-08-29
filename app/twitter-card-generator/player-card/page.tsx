@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 import Content from "./content";
 export const metadata: Metadata = {
-  title: "Meta Tag Generator",
+  title: "Player Card | Twitter Card Generator",
   description:
-    "Create precise meta tags with our Meta Tags Generator for optimal SEO impact. Enhance meta descriptions and titles effortlessly.",
+    "Player Card Generator: Create rich media experiences for your Tweets with embedded videos, music, and podcasts.",
   alternates: {
-    canonical: "https://generateforfrontend.com/meta-tag-generator",
+    canonical: "twitter-card-generator/player-card",
   },
 };
 export default function Page() {

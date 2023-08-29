@@ -1,16 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import DownArrow from "./icons/downArrow";
 import pages from "../json/pages.json";
 export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
   const pathname = usePathname();
-  const router = useRouter();
   const [active, setActive] = useState(false);
   const [selected, setSelected] = useState("");
-  console.log(pathname, "pathname");
 
   return (
     <div

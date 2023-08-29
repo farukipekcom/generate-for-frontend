@@ -10,40 +10,40 @@
   {
     "id": "02.",
     "title": "Twitter Card Generator",
-    "description": "Produce the most beneficial meta tags for your webpage to enhance SEO and enrich the experience for search engine users.",
+    "description": "A Twitter card meta tag generator is a tool that helps you create the meta tags that are needed for Twitter cards.",
     "link": "/twitter-card-generator",
     "color": "#E5D0CF",
     "colorDark": "#C88683",
     "pages": [
       {
         "id": "01.",
-        "title": "App",
-        "description": "App",
-        "link": "/twitter-card-generator/app",
+        "title": "App Card",
+        "description": "A Card with a direct download to a mobile app.",
+        "link": "/twitter-card-generator/app-card",
         "color": "#E5D0CF",
         "colorDark": "#C88683"
       },
       {
         "id": "02.",
-        "title": "Player",
-        "description": "Player",
-        "link": "/twitter-card-generator/player",
+        "title": "Player Card",
+        "description": "A Card that can display video/audio/media.",
+        "link": "/twitter-card-generator/player-card",
         "color": "#E5D0CF",
         "colorDark": "#C88683"
       },
       {
         "id": "03.",
-        "title": "Summary",
-        "description": "Summary",
-        "link": "/twitter-card-generator/summary",
+        "title": "Summary Card",
+        "description": "Title, description, and thumbnail.",
+        "link": "/twitter-card-generator/summary-card",
         "color": "#E5D0CF",
         "colorDark": "#C88683"
       },
       {
         "id": "04.",
-        "title": "Summary With Large Image",
-        "description": "Summary With Large Image",
-        "link": "/twitter-card-generator/summary-with-large-image",
+        "title": "Summary With Large Image Card",
+        "description": "With a prominently-featured image.",
+        "link": "/twitter-card-generator/summary-with-large-image-card",
         "color": "#E5D0CF",
         "colorDark": "#C88683"
       }

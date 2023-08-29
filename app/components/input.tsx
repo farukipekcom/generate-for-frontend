@@ -29,11 +29,14 @@ export default function Inputs(Props: Props) {
 
   return (
     <div className="flex flex-col ">
-      <label htmlFor={name} className="relative text-gray_dark dark:text-gray">
+      <label
+        htmlFor={name}
+        className="relative font-medium text-gray_dark dark:text-gray"
+      >
         {title}
         {max && (
           <span
-            className={`absolute right-0 border-none	text-sm font-semibold ${high()} `}
+            className={`absolute right-0 border-none text-sm font-semibold ${high()} `}
           >
             {inputLength} / {max}
           </span>
@@ -47,9 +50,10 @@ export default function Inputs(Props: Props) {
         className="customInput"
       />
       {info && (
-        <div className="mt-1 text-sm font-medium dark:text-[#999999]">
-          {info}
-        </div>
+        <div
+          className="mt-1 text-sm font-normal text-secondary dark:text-[#999999]"
+          dangerouslySetInnerHTML={{ __html: info }}
+        />
       )}
     </div>
   );

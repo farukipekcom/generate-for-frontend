@@ -38,12 +38,12 @@ export default function Content() {
   }`;
   return (
     <>
-      <div className="xl:pr- md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:dark:border-border">
+      <div className="xl: md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:pr-5 xl:dark:border-border">
         <Breadcrumbs
           items={[
             { name: "Home", link: "/" },
             {
-              name: "Deneme Tags",
+              name: "Meta Tags",
               link: "/meta-tag-generator",
             },
           ]}
