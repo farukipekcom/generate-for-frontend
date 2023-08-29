@@ -102,7 +102,7 @@ export default function Content() {
                 {
                   position: 2,
                   name: "Twitter Card",
-                  item: "https://generateforfrontend.com/meta-tag-generator",
+                  item: "https://generateforfrontend.com/twitter-card-generator/",
                 },
                 {
                   position: 3,

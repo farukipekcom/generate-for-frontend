@@ -93,7 +93,7 @@ export default function Content() {
                 "Create visually appealing Twitter cards with a large image to drive traffic to your website or blog.",
               datePublished: "2023-08-28",
               dateModified: "2023-08-28",
-              link: "https://generateforfrontend.com/meta-tag-generator",
+              link: "https://generateforfrontend.com/twitter-card-generator/summary-with-large-image-card",
               breadcrumb: [
                 {
                   position: 1,
