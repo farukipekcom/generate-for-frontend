@@ -9,13 +9,38 @@
 
 <url>
   <loc>https://generateforfrontend.com/</loc>
-  <lastmod>2023-08-21T17:54:30+00:00</lastmod>
+  <lastmod>2023-08-30T13:41:32+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://generateforfrontend.com/meta-tags</loc>
-  <lastmod>2023-08-21T17:54:30+00:00</lastmod>
+  <loc>https://generateforfrontend.com/meta-tag-generator</loc>
+  <lastmod>2023-08-30T13:41:32+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://generateforfrontend.com/twitter-card-generator</loc>
+  <lastmod>2023-08-30T13:41:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://generateforfrontend.com/twitter-card-generator/app-card</loc>
+  <lastmod>2023-08-30T13:41:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://generateforfrontend.com/twitter-card-generator/player-card</loc>
+  <lastmod>2023-08-30T13:41:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://generateforfrontend.com/twitter-card-generator/summary-card</loc>
+  <lastmod>2023-08-30T13:41:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://generateforfrontend.com/twitter-card-generator/summary-with-large-image-card</loc>
+  <lastmod>2023-08-30T13:41:32+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
