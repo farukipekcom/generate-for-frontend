@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Highlight from "react-highlight";
 import Title from "./title";
 import Description from "./description";
@@ -20,7 +19,7 @@ export default function Code(Props: Props) {
     }, 1500);
   };
   return (
-    <div className="xl:mt-[28px] xl:w-1/2 xl:pl-5 xl:pr-5 xl:pt-0">
+    <div className="h-max xl:sticky xl:top-0 xl:mt-[28px] xl:w-1/2 xl:pl-5 xl:pr-5 xl:pt-0">
       <Title title={title} />
       <Description description={description} />
       <div
