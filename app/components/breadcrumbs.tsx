@@ -21,8 +21,8 @@ export default function Breadcrumbs(Props: Props) {
               href={`https://generateforfrontend.com` + item.link}
               className={`${
                 item.link === pathname
-                  ? "rounded-small bg-green_light px-2 py-1 dark:text-primary"
-                  : ""
+                  ? "inline-block w-36 overflow-hidden text-ellipsis whitespace-nowrap rounded-small bg-green_light px-2 py-1 dark:text-primary sm:w-full"
+                  : "whitespace-nowrap"
               } `}
             >
               {item.name}
