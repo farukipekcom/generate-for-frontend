@@ -16,7 +16,10 @@ export default function Breadcrumbs(Props: Props) {
     <div className="flex items-center gap-x-2 text-sm font-medium text-secondary dark:text-white">
       {items.map((item: any, index: number) => {
         return (
-          <div className="afterarrow text-primary dark:text-white" key={index}>
+          <div
+            className="afterarrow flex h-7 items-center text-primary dark:text-white"
+            key={index}
+          >
             <Link
               href={`https://generateforfrontend.com` + item.link}
               className={`${
