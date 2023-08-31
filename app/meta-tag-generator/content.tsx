@@ -61,14 +61,12 @@ export default function Content() {
           <Input name="author" title="Author" onChange={handleChange} />
           <Select
             name="charset"
-            id="charset"
             title="Charset"
             data={charset}
             onChange={handleChange}
           />
           <Select
             name="robots"
-            id="robots"
             title="Robots?"
             data={robots}
             onChange={handleChange}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Label from "./label";
 export interface Props {
   name: string;
   title: string;
@@ -13,38 +14,13 @@ export default function Inputs(Props: Props) {
   const onInput = (e: any) => {
     setInputLength(e.target.value.length);
   };
-  const high = () => {
-    return (max !== undefined &&
-      inputLength / max >= 0.45 &&
-      inputLength / max < 0.75) === true
-      ? "warningYellow"
-      : (max !== undefined &&
-          inputLength / max >= 0.75 &&
-          inputLength / max <= 1) === true
-      ? "warningGreen"
-      : max != undefined && inputLength > max === true
-      ? "warningRed"
-      : "";
-  };
-
   return (
     <div className="flex flex-col ">
-      <label
-        htmlFor={name}
-        className="relative font-medium text-gray_dark dark:text-gray"
-      >
-        {title}
-        {max && (
-          <span
-            className={`absolute right-0 border-none text-sm font-semibold ${high()} `}
-          >
-            {inputLength} / {max}
-          </span>
-        )}
-      </label>
+      <Label name={name} title={title} inputLength={inputLength} max={max} />
       <input
         type={type}
         name={name}
+        id={name}
         onChange={onChange}
         onInput={onInput}
         className="customInput"

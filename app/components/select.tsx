@@ -1,20 +1,16 @@
+import Label from "./label";
+
 interface Props {
   title: string;
   data: string[];
   onChange: any;
   name: string;
-  id: string;
 }
 export default function Select(Props: Props) {
-  const { title, data, onChange, name, id } = Props;
+  const { title, data, onChange, name } = Props;
   return (
     <div className="selectWrapper relative">
-      <label
-        htmlFor="select"
-        className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-      >
-        {title}
-      </label>
+      <Label name={name} title={title} />
       <select
         className="customInput block h-10 w-full appearance-none"
         onChange={onChange}
