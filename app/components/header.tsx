@@ -26,6 +26,7 @@ export default function Header() {
             href="/"
             className="w-max"
             onClick={() => setMobileMenuActive(false)}
+            aria-label="Generate for Frontend Logo"
           >
             <Logo />
           </Link>
@@ -47,6 +48,7 @@ export default function Header() {
             className={`flex ${
               mobileMenuActive === true ? "flex " : "hidden lg:flex"
             }`}
+            aria-label="Buy Me A Coffee"
           >
             <BuyMeACoffee />
           </Link>

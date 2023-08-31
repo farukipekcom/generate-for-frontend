@@ -8,10 +8,14 @@ export default function Toggle() {
     setTheme(e.target.checked === true ? "dark" : "light");
   }
   return (
-    <label className="relative inline-flex cursor-pointer items-center">
+    <label
+      className="relative inline-flex cursor-pointer items-center"
+      htmlFor="toggle"
+    >
       <input
         type="checkbox"
         value=""
+        id="toggle"
         className="peer sr-only"
         onChange={(e) => toggleTheme(e)}
         checked={theme === "dark" ? true : false}

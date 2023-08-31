@@ -63,6 +63,11 @@ body {
   background-color: #cfe5d1 !important;
   stroke: #519056 !important;
 }
+.pages > a:nth-child(4) > div,
+.pages > a:nth-child(4) > div > svg > g > path {
+  background-color: #f3f8d6 !important;
+  stroke: #a6af62 !important;
+}
 .customShadow {
   box-shadow:
     0px 2px 4px 0px rgba(0, 0, 0, 0.01),
