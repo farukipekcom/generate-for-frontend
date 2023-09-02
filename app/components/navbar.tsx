@@ -46,7 +46,7 @@ export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
                 item.pages?.length > 0) ||
                 (pathname.includes(item.link) && (
                   <ul
-                    className={`ml-4 mt-3 flex w-[calc(100%-28px)] flex-col gap-y-2 border-l border-solid border-secondary ${
+                    className={`ml-4 mt-3 flex w-[calc(100%-28px)] flex-col gap-y-2 border-l border-solid border-dark_input_border ${
                       item.pages === undefined && "hidden"
                     }`}
                   >

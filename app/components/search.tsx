@@ -40,7 +40,12 @@ export default function Search(Props: Props) {
     setQuery("");
     setActive(false);
   }, [pathname]);
-  const filteredData = pages.filter((page) =>
+
+  const mainPages = pages.filter((page) => page).map((item) => item);
+  const subPages: any = mainPages
+    .filter((page) => page.pages)
+    .map((item) => item.pages);
+  const filteredData: any = [...mainPages, ...subPages[0]].filter((page) =>
     page.title.toLowerCase().includes(query.toLocaleLowerCase()),
   );
 
@@ -76,7 +81,7 @@ export default function Search(Props: Props) {
           className="customShadow absolute top-10 z-20 mt-2 flex w-full flex-col gap-y-2 rounded-small border border-solid border-[#E7E7E7] bg-white p-4 px-2 py-2 dark:bg-primary lg:w-[420px]"
           ref={innerBorderRef}
         >
-          {filteredData.map((item) => {
+          {filteredData.map((item: any) => {
             return (
               <div
                 className="flex h-10 items-center gap-x-2 rounded-small hover:bg-[#F4F4F4] dark:hover:bg-secondary"
