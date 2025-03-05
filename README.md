@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Welcome to Generate for Frontend 👋</h1>
 
-## Getting Started
+### Efficient Code Generator Tool for Developers. Boost Your Productivity!
 
-First, run the development server:
+Generate code quickly and easily with our variety of tools. Whether you're a beginner or an experienced developer, we have the tools you need to get the job done. Generate for Frontend cover a wide range of coding needs, including meta tags, Twitter cards, CSS, HTML, and more. Start generating code like a pro!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⭐️ [Demo](https://generateforfrontend.com/)
+## ⭐️ [Figma](https://www.figma.com/design/ovcrYRlM7izb4Ex6N9rsxZ/Generate-for-Frontend?node-id=0-1&t=aGCB1qptdRCNBGz7-1)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 📌 Homepage
+---
+<img width="1527" alt="Screenshot 2024-08-19 at 11 13 44 PM" src="https://github.com/user-attachments/assets/e39057c9-d9d2-46da-8fbc-4e5f88181e76">
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+</br>
 
-## Learn More
+### 📌 Meta Tag Generator
+---
+<img width="1527" alt="Screenshot 2024-08-19 at 11 13 48 PM" src="https://github.com/user-attachments/assets/34a8c5f7-7cf6-4f6f-bb76-ceaca70271c7">
 
-To learn more about Next.js, take a look at the following resources:
+</br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📌 Twitter Card Generator
+---
+<img width="1527" alt="Screenshot 2024-08-19 at 11 13 53 PM" src="https://github.com/user-attachments/assets/4a5a7f26-0b7c-46b3-ba44-4578d863305c">
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+</br>
 
-## Deploy on Vercel
+### 📌 Dark Mode
+---
+<img width="1527" alt="Screenshot 2024-08-19 at 11 14 17 PM" src="https://github.com/user-attachments/assets/76acaaf6-5b54-4e24-af4e-5c4f70e43dee">
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+</br>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Author
+
+👤 **Faruk İpek**
+
+[![Facebook](https://github.com/user-attachments/assets/182cd4a2-34c4-4523-8975-e8885e9f1391)](https://www.facebook.com/farukipekcom/)&nbsp;&nbsp;
+[![LinkedIn](https://github.com/user-attachments/assets/e7c1e095-6cd5-41f8-a00b-cd36b8b6e58e)](https://www.linkedin.com/in/farukipekcom/)&nbsp;&nbsp;
+[![X](https://github.com/user-attachments/assets/834c448b-e702-4f7a-a98c-5fabbfa20b92)](https://www.x.com/farukipekcom/)&nbsp;&nbsp;
+[![Website](https://github.com/user-attachments/assets/3765f25a-10ae-43d9-971a-8955936f774e)](https://farukipek.com/)&nbsp;&nbsp;
+[![Email](https://github.com/user-attachments/assets/cc905871-fb21-40db-93d9-82840a8122c2)](mailto:faruk@farukipek.com)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/farukipekcom/generate-for-frontend/issues). You can also take a look at the [contributing guide](https://github.com/farukipekcom/generate-for-frontend/issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+---
