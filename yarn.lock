@@ -1605,23 +1605,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
-  version: 15.7.14
-  resolution: "@types/prop-types@npm:15.7.14"
-  checksum: 10c0/1ec775160bfab90b67a782d735952158c7e702ca4502968aa82565bd8e452c2de8601c8dfe349733073c31179116cf7340710160d3836aa8a1ef76d1532893b1
+"@types/react-dom@npm:^19.0.4":
+  version: 19.0.4
+  resolution: "@types/react-dom@npm:19.0.4"
+  peerDependencies:
+    "@types/react": ^19.0.0
+  checksum: 10c0/4e71853919b94df9e746a4bd73f8180e9ae13016333ce9c543dcba9f4f4c8fe6e28b038ca6ee61c24e291af8e03ca3bc5ded17c46dee938fcb32d71186fda7a3
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:18.2.7":
-  version: 18.2.7
-  resolution: "@types/react-dom@npm:18.2.7"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: 10c0/bd090f5e1b13765fbc191d9eb720dd152d26c20558221963009189c4636ce11e4c1c976e4cde4a74335f997a2be651af27d3727474a8091424101a83a71eebfb
-  languageName: node
-  linkType: hard
-
-"@types/react-highlight@npm:^0.12.5":
+"@types/react-highlight@npm:^0.12.8":
   version: 0.12.8
   resolution: "@types/react-highlight@npm:0.12.8"
   dependencies:
@@ -1630,30 +1623,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
+"@types/react@npm:*, @types/react@npm:^19.0.10":
   version: 19.0.10
   resolution: "@types/react@npm:19.0.10"
   dependencies:
     csstype: "npm:^3.0.2"
   checksum: 10c0/41884cca21850c8b2d6578b172ca0ca4fff6021251a68532b19f2031ac23dc5a9222470208065f8d9985d367376047df2f49ece8d927f7d04cdc94922b1eb34b
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:18.2.20":
-  version: 18.2.20
-  resolution: "@types/react@npm:18.2.20"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 10c0/42bab593f14b202a5ee98073ed579f147de9e4dd4dcdefcba19588cf06c0fff83f0a602db535e9ff0c0896a3aa25759841ebddb59a2c7c293cb6981ddee08fd0
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:*":
-  version: 0.23.0
-  resolution: "@types/scheduler@npm:0.23.0"
-  checksum: 10c0/5cf7f2ba3732b74877559eb20b19f95fcd0a20c17dcb20e75a7ca7c7369cd455aeb2d406b3ff5a38168a9750da3bad78dd20d96d11118468b78f4959b8e56090
   languageName: node
   linkType: hard
 
@@ -2356,9 +2331,9 @@ __metadata:
   dependencies:
     "@svgr/webpack": "npm:^8.1.0"
     "@types/node": "npm:20.5.0"
-    "@types/react": "npm:18.2.20"
-    "@types/react-dom": "npm:18.2.7"
-    "@types/react-highlight": "npm:^0.12.5"
+    "@types/react": "npm:^19.0.10"
+    "@types/react-dom": "npm:^19.0.4"
+    "@types/react-highlight": "npm:^0.12.8"
     "@vercel/analytics": "npm:^1.0.2"
     autoprefixer: "npm:10.4.15"
     next: "npm:13.4.13"
