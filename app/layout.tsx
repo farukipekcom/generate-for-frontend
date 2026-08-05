@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
@@ -62,10 +62,12 @@ export const metadata: Metadata = {
     },
   ],
   manifest: "/icons/site.webmanifest",
-  themeColor: "#ffffff",
   alternates: {
     canonical: url,
   },
+};
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 const jsonLd = {
   "@context": "https://schema.org/",
