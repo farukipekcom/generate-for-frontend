@@ -31,6 +31,7 @@ export default function Home() {
         {pages.map((item) => {
           return (
             <Card
+              key={item.link}
               title={item.title}
               description={item.description}
               link={item.link}

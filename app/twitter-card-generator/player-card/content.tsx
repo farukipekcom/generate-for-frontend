@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Input from "../../components/input";
 import Textarea from "../../components/textarea";
 import Code from "../../components/code";
+import Output from "../../components/output";
+import Preview from "../../components/preview";
 import Breadcrumbs from "../../components/breadcrumbs";
 import Title from "../../components/title";
 import Description from "../../components/description";
 import Jsonld from "../../components/jsonld";
+import { escapeAttribute as e } from "../../lib/escape";
 export default function Content() {
   const [form, setForm] = useState({
     title: "",
@@ -22,24 +25,25 @@ export default function Content() {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
   const data = `<meta name="twitter:card" content="player">\n${
-    form.title && `<meta name="twitter:title" content="${form.title}">\n`
-  }${form.site && `<meta name="twitter:site" content="@${form.site}">\n`}${
+    form.title && `<meta name="twitter:title" content="${e(form.title)}">\n`
+  }${form.site && `<meta name="twitter:site" content="@${e(form.site)}">\n`}${
     form.description &&
-    `<meta name="twitter:description" content="${form.description}">\n`
+    `<meta name="twitter:description" content="${e(form.description)}">\n`
   }${
     form.player_url &&
-    `<meta name="twitter:player" content="${form.player_url}">\n`
+    `<meta name="twitter:player" content="${e(form.player_url)}">\n`
   }${
     form.height &&
-    `<meta name="twitter:player:height" content="${form.height}">\n`
+    `<meta name="twitter:player:height" content="${e(form.height)}">\n`
   }${
-    form.width && `<meta name="twitter:player:width" content="${form.width}">\n`
+    form.width &&
+    `<meta name="twitter:player:width" content="${e(form.width)}">\n`
   }${
     form.image_url &&
-    `<meta name="twitter:image" content="${form.image_url}">\n`
+    `<meta name="twitter:image" content="${e(form.image_url)}">\n`
   }${
     form.image_alt_text &&
-    `<meta name="twitter:image:alt" content="${form.image_alt_text}">\n`
+    `<meta name="twitter:image:alt" content="${e(form.image_alt_text)}">\n`
   }`;
   return (
     <>
@@ -107,13 +111,23 @@ export default function Content() {
           />
         </div>
       </div>
-      <Code
-        data={data}
-        title="Code"
-        description={
-          "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
-        }
-      />
+      <Output>
+        <Preview
+          variant="player"
+          title={form.title}
+          description={form.description}
+          site={form.site}
+          imageUrl={form.image_url}
+          imageAlt={form.image_alt_text}
+        />
+        <Code
+          data={data}
+          title="Code"
+          description={
+            "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
+          }
+        />
+      </Output>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

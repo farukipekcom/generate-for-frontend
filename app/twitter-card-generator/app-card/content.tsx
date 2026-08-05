@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Input from "../../components/input";
 import Textarea from "../../components/textarea";
 import Code from "../../components/code";
+import Output from "../../components/output";
+import Preview from "../../components/preview";
 import Breadcrumbs from "../../components/breadcrumbs";
 import Title from "../../components/title";
 import Description from "../../components/description";
 import Jsonld from "../../components/jsonld";
+import { escapeAttribute as e } from "../../lib/escape";
 export default function Content() {
   const [form, setForm] = useState({
     site: "",
@@ -24,38 +27,40 @@ export default function Content() {
     setForm({ ...form, [event.target.name]: event.target.checked });
   };
   const data = `<meta name="twitter:card" content="app">\n${
-    form.site && `<meta name="twitter:site" content="@${form.site}">\n`
+    form.site && `<meta name="twitter:site" content="@${e(form.site)}">\n`
   }${
     form.description &&
-    `<meta name="twitter:description" content="${form.description}">\n`
+    `<meta name="twitter:description" content="${e(form.description)}">\n`
   }
 <!-- Iphone -->
 ${
   form.app_name &&
-  `<meta name="twitter:app:name:iphone" content="${form.app_name}">\n`
+  `<meta name="twitter:app:name:iphone" content="${e(form.app_name)}">\n`
 }${
     form.iphone_app_id &&
-    `<meta name="twitter:app:id:iphone" content="${form.iphone_app_id}">\n`
+    `<meta name="twitter:app:id:iphone" content="${e(form.iphone_app_id)}">\n`
   }
 <!-- Ipad --> 
 ${
   form.app_name &&
-  `<meta name="twitter:app:name:ipad" content="${form.app_name}">\n`
+  `<meta name="twitter:app:name:ipad" content="${e(form.app_name)}">\n`
 }${
     form.ipad_app_id &&
-    `<meta name="twitter:app:id:ipad" content="${form.ipad_app_id}">\n`
+    `<meta name="twitter:app:id:ipad" content="${e(form.ipad_app_id)}">\n`
   }
 <!-- Google Play --> 
 ${
   form.app_name &&
-  `<meta name="twitter:app:name:googleplay" content="${form.app_name}">\n`
+  `<meta name="twitter:app:name:googleplay" content="${e(form.app_name)}">\n`
 }${
     form.google_play_app_id &&
-    `<meta name="twitter:app:id:googleplay" content="${form.google_play_app_id}">\n`
+    `<meta name="twitter:app:id:googleplay" content="${e(
+      form.google_play_app_id,
+    )}">\n`
   }
 ${
   form.country &&
-  `<meta name="twitter:app:country" content="${form.country}">\n`
+  `<meta name="twitter:app:country" content="${e(form.country)}">\n`
 }`;
   return (
     <>
@@ -115,13 +120,21 @@ ${
           />
         </div>
       </div>
-      <Code
-        data={data}
-        title="Code"
-        description={
-          "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
-        }
-      />
+      <Output>
+        <Preview
+          variant="app"
+          appName={form.app_name}
+          description={form.description}
+          site={form.site}
+        />
+        <Code
+          data={data}
+          title="Code"
+          description={
+            "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
+          }
+        />
+      </Output>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

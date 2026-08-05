@@ -48,7 +48,7 @@ export default function Code(Props: Props) {
     ? highlighter.codeToHtml(data, { lang: "html", theme })
     : null;
   return (
-    <div className="h-max xl:sticky xl:top-0 xl:mt-[28px] xl:w-1/2 xl:pl-5 xl:pr-5 xl:pt-0">
+    <div>
       <Title title={title} />
       <Description description={description} />
       <div

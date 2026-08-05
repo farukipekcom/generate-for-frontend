@@ -41,12 +41,9 @@ export default function Search(Props: Props) {
     setActive(false);
   }, [pathname]);
 
-  const mainPages = pages.filter((page) => page).map((item) => item);
-  const subPages: any = mainPages
-    .filter((page) => page.pages)
-    .map((item) => item.pages);
-  const filteredData: any = [...mainPages, ...subPages[0]].filter((page) =>
-    page.title.toLowerCase().includes(query.toLocaleLowerCase()),
+  const subPages = pages.flatMap((page) => page.pages ?? []);
+  const filteredData = [...pages, ...subPages].filter((page) =>
+    page.title.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
@@ -81,11 +78,11 @@ export default function Search(Props: Props) {
           className="customShadow absolute top-10 z-20 mt-2 flex w-full flex-col gap-y-2 rounded-small border border-solid border-[#E7E7E7] bg-white p-4 px-2 py-2 dark:bg-primary lg:w-[420px]"
           ref={innerBorderRef}
         >
-          {filteredData.map((item: any) => {
+          {filteredData.map((item) => {
             return (
               <div
                 className="flex h-10 items-center gap-x-2 rounded-small hover:bg-[#F4F4F4] dark:hover:bg-secondary"
-                key={item.id}
+                key={item.link}
               >
                 {item.title && (
                   <Link
