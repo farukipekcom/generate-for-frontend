@@ -10,10 +10,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <Header />
       <div className="flex w-full flex-col lg:ml-[300px] lg:mt-0">
         <div className="mt-0 hidden h-20 w-full rounded-normal bg-primary lg:flex">
-          <div className="flex w-1/2 items-center p-5 ">
+          <div className="flex w-1/2 items-center p-5">
             <Search />
           </div>
-          <div className="flex  w-1/2 items-center  justify-end p-6">
+          <div className="flex w-1/2 items-center justify-end p-6">
             <Toggle />
           </div>
         </div>
