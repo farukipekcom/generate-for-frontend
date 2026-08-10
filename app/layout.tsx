@@ -3,11 +3,13 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
+import { siteUrl } from "./lib/site";
 const inter = Inter({ subsets: ["latin"] });
 const title = "Generate for Frontend";
 const description =
   "Streamline frontend development with our code generator. Effortlessly create essential code snippets for a seamless web design process.";
-const url = "https://generateforfrontend.com";
+const url = siteUrl;
+const image = `${siteUrl}/open-graph.jpg`;
 const locale = "en-us";
 export const metadata: Metadata = {
   title: {
@@ -23,10 +25,10 @@ export const metadata: Metadata = {
     locale,
     images: [
       {
-        url: "https://generateforfrontend.com/open-graph.jpg",
+        url: image,
         width: 1200,
         height: 627,
-        alt: "Generate for Frontend",
+        alt: title,
       },
     ],
     type: "website",
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
     title,
     description,
     site: "@farukipekcom",
-    images: ["https://generateforfrontend.com/open-graph.jpg"],
+    images: [image],
   },
   robots: {
     index: true,
@@ -72,8 +74,8 @@ export const viewport: Viewport = {
 const jsonLd = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
-  name: "Generate for Frontend",
-  url: "https://generateforfrontend.com",
+  name: title,
+  url,
 };
 export default function RootLayout({
   children,

@@ -128,25 +128,34 @@ export default function Content() {
             <Input
               name="title"
               title="Title"
+              value={form.title}
               onChange={handleChange}
               max={60}
             />
             <Textarea
               name="description"
               title="Description"
+              value={form.description}
               onChange={handleChange}
               max={160}
             />
             <Input
               name="keywords"
               title="Keywords"
+              value={form.keywords}
               onChange={handleChange}
               info="A comma separated list of terms. Most search engines ignore this tag, but some site search tools still read it."
             />
-            <Input name="author" title="Author" onChange={handleChange} />
+            <Input
+              name="author"
+              title="Author"
+              value={form.author}
+              onChange={handleChange}
+            />
             <Input
               name="canonical"
               title="Canonical URL"
+              value={form.canonical}
               onChange={handleChange}
               info="The preferred URL for this page. Tells search engines which version to index when the same content is reachable from several addresses."
             />
@@ -156,12 +165,14 @@ export default function Content() {
               name="charset"
               title="Charset"
               data={charset}
+              value={form.charset}
               onChange={handleChange}
             />
             <Select
               name="referrer"
               title="Referrer Policy"
               data={referrer}
+              value={form.referrer}
               onChange={handleChange}
             />
             <div className="flex flex-col">
@@ -184,18 +195,21 @@ export default function Content() {
               name="robots"
               title="Robots?"
               data={robots}
+              value={form.robots}
               onChange={handleChange}
             />
             <Select
               name="max_image_preview"
               title="Max Image Preview"
               data={imagePreview}
+              value={form.max_image_preview}
               onChange={handleChange}
             />
             <Input
               type="number"
               name="max_snippet"
               title="Max Snippet"
+              value={form.max_snippet}
               onChange={handleChange}
               info="Maximum characters of this page a search engine may show as a text snippet. Use <b>-1</b> for no limit."
             />
@@ -234,12 +248,14 @@ export default function Content() {
             <Input
               name="google_verification"
               title="Google Site Verification"
+              value={form.google_verification}
               onChange={handleChange}
               info="The token from Google Search Console, used to prove you own the site."
             />
             <Input
               name="bing_verification"
               title="Bing Site Verification"
+              value={form.bing_verification}
               onChange={handleChange}
               info="The token from Bing Webmaster Tools."
             />
@@ -248,22 +264,26 @@ export default function Content() {
             <Input
               name="favicon_32"
               title="Favicon URL (32x32)"
+              value={form.favicon_32}
               onChange={handleChange}
             />
             <Input
               name="favicon_16"
               title="Favicon URL (16x16)"
+              value={form.favicon_16}
               onChange={handleChange}
             />
             <Input
               name="apple_touch_icon"
               title="Apple Touch Icon URL (180x180)"
+              value={form.apple_touch_icon}
               onChange={handleChange}
               info="Used when someone adds your site to the home screen on iOS."
             />
             <Input
               name="manifest"
               title="Web App Manifest URL"
+              value={form.manifest}
               onChange={handleChange}
               info="Usually <b>/site.webmanifest</b>. Describes your site when it is installed as an app."
             />

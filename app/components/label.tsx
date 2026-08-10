@@ -15,15 +15,15 @@ export default function Label(Props: Props) {
       inputLength / max < 0.75) === true
       ? "warningYellow"
       : (max !== undefined &&
-          inputLength !== undefined &&
-          inputLength / max >= 0.75 &&
-          inputLength / max <= 1) === true
-      ? "warningGreen"
-      : max != undefined &&
-        inputLength !== undefined &&
-        inputLength > max === true
-      ? "warningRed"
-      : "";
+            inputLength !== undefined &&
+            inputLength / max >= 0.75 &&
+            inputLength / max <= 1) === true
+        ? "warningGreen"
+        : max != undefined &&
+            inputLength !== undefined &&
+            inputLength > max === true
+          ? "warningRed"
+          : "";
   };
   return (
     <label

@@ -15,7 +15,7 @@ export default function Checkbox(Props: Props) {
         name={name}
         type="checkbox"
         onChange={onChange}
-        className="mr-2 h-4 w-4 rounded text-secondary  accent-secondary  dark:bg-yellow-500 dark:accent-white"
+        className="mr-2 h-4 w-4 rounded text-secondary accent-secondary dark:bg-yellow-500 dark:accent-white"
         checked={checked}
       />
       <Label name={name} title={title} />

@@ -1,13 +1,35 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DownArrow from "./icons/downArrow";
 import pages from "../json/pages.json";
-export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
+interface Props {
+  mobileMenuActive: boolean;
+  onchangeActive: () => void;
+}
+const submenuId = (link: string) => `submenu-${link.replace(/\//g, "-")}`;
+const groupFor = (pathname: string) => {
+  const current = pages.find(
+    (page) =>
+      page.pages &&
+      (pathname === page.link || pathname.startsWith(`${page.link}/`)),
+  );
+  return current ? current.link : null;
+};
+export default function Navbar(Props: Props) {
+  const { mobileMenuActive, onchangeActive } = Props;
   const pathname = usePathname();
-  const [active, setActive] = useState(false);
-  const [selected, setSelected] = useState("");
+  // Only one group is open at a time, tracked by link so every group gets its
+  // own state instead of sharing one flag. Seeded during render so the open
+  // group is server-rendered rather than appearing after hydration.
+  const [openGroup, setOpenGroup] = useState<string | null>(() =>
+    groupFor(pathname),
+  );
+
+  useEffect(() => {
+    setOpenGroup(groupFor(pathname));
+  }, [pathname]);
 
   return (
     <div
@@ -17,8 +39,10 @@ export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
     >
       <ul className="flex w-full flex-col gap-y-2">
         {pages.map((item) => {
+          const children = item.pages ?? [];
+          const isOpen = openGroup === item.link;
           return (
-            <li key={item.id} className="relative">
+            <li key={item.link} className="relative">
               <Link
                 href={item.link}
                 className={
@@ -28,126 +52,51 @@ export default function Navbar({ mobileMenuActive, onchangeActive }: any) {
               >
                 {item.title}
               </Link>
-              {item.pages !== undefined && (
-                <div
-                  className="absolute right-1 top-2 z-0 flex h-6 w-6 cursor-pointer items-center justify-center"
-                  onClick={() => {
-                    setActive(!active);
-                    setSelected("twitter");
-                  }}
+              {children.length > 0 && (
+                <button
+                  type="button"
+                  className="absolute right-1 top-2 z-10 flex h-6 w-6 cursor-pointer items-center justify-center"
+                  onClick={() => setOpenGroup(isOpen ? null : item.link)}
+                  aria-expanded={isOpen}
+                  aria-controls={isOpen ? submenuId(item.link) : undefined}
+                  aria-label={`${isOpen ? "Collapse" : "Expand"} ${
+                    item.title
+                  } pages`}
                 >
-                  <DownArrow />
-                </div>
-              )}
-              {/* pathname === item.link && */}
-              {(selected === "twitter" &&
-                active === true &&
-                item.pages !== undefined &&
-                item.pages?.length > 0) ||
-                (pathname.includes(item.link) && (
-                  <ul
-                    className={`ml-4 mt-3 flex w-[calc(100%-28px)] flex-col gap-y-2 border-l border-solid border-dark_input_border ${
-                      item.pages === undefined && "hidden"
+                  <span
+                    className={`flex transition-transform duration-200 ${
+                      isOpen ? "rotate-180" : ""
                     }`}
                   >
-                    {item.pages?.map((page) => {
-                      return (
-                        <li key={page.id}>
-                          <Link
-                            href={page.link}
-                            className={
-                              pathname === page.link
-                                ? "dropdown-menu-item-active"
-                                : "dropdown-menu-item"
-                            }
-                            onClick={onchangeActive}
-                          >
-                            {page.title}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                ))}
+                    <DownArrow />
+                  </span>
+                </button>
+              )}
+              {children.length > 0 && isOpen && (
+                <ul
+                  id={submenuId(item.link)}
+                  className="ml-4 mt-3 flex w-[calc(100%-28px)] flex-col gap-y-2 border-l border-solid border-dark_input_border"
+                >
+                  {children.map((page) => (
+                    <li key={page.link}>
+                      <Link
+                        href={page.link}
+                        className={
+                          pathname === page.link
+                            ? "dropdown-menu-item-active"
+                            : "dropdown-menu-item"
+                        }
+                        onClick={onchangeActive}
+                      >
+                        {page.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           );
         })}
-        {/* <li className="relative ">
-          <Link
-            href="/twitter"
-            className={
-              pathname === "/twitter" ? "menu-item-active" : "menu-item"
-            }
-            onClick={onchangeActive}
-          >
-            Twitter Card
-          </Link>
-          <div
-            className="absolute right-2 top-2 z-0 flex h-6 w-6 cursor-pointer items-center justify-center"
-            onClick={() => {
-              setActive(!active);
-              setSelected("twitter");
-            }}
-          >
-            <DownArrow />
-          </div>
-          {active && selected === "twitter" && (
-            <ul className="ml-4 mt-2 flex flex-col gap-y-2">
-              <li>
-                <Link
-                  href="/twitter/app"
-                  className={
-                    pathname === "/twitter/app"
-                      ? "menu-item-active text-sm"
-                      : "menu-item text-sm"
-                  }
-                  onClick={onchangeActive}
-                >
-                  App
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/twitter/player"
-                  className={
-                    pathname === "/twitter/player"
-                      ? "menu-item-active text-sm"
-                      : "menu-item text-sm"
-                  }
-                  onClick={onchangeActive}
-                >
-                  Player
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/twitter/summary"
-                  className={
-                    pathname === "/twitter/summary"
-                      ? "menu-item-active text-sm"
-                      : "menu-item text-sm"
-                  }
-                  onClick={onchangeActive}
-                >
-                  Summary
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/twitter/summary-card-with-large-image"
-                  className={
-                    pathname === "/twitter/summary-card-with-large-image"
-                      ? "menu-item-active text-sm"
-                      : "menu-item text-sm"
-                  }
-                  onClick={onchangeActive}
-                >
-                  Summary Card With Large Image
-                </Link>
-              </li>
-            </ul>
-          )}
-        </li> */}
       </ul>
     </div>
   );

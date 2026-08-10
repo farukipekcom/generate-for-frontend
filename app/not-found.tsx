@@ -3,8 +3,8 @@ import React from "react";
 
 export default function NotFound() {
   return (
-    <div className="h-calc relative flex flex-col items-center justify-center">
-      <div className="absolute  text-8xl font-bold text-primary opacity-5 dark:text-white md:text-[180px]">
+    <div className="relative flex h-calc flex-col items-center justify-center">
+      <div className="absolute text-8xl font-bold text-primary opacity-5 dark:text-white md:text-[180px]">
         ERROR
       </div>
       <div className="text-8xl font-extrabold text-primary dark:text-white md:text-[180px]">

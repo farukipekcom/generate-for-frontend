@@ -8,7 +8,7 @@ export default function Lines() {
       viewBox="0 0 129 143"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className=" absolute right-0 top-0"
+      className="absolute right-0 top-0"
     >
       <g clipPath="url(#clip0_300_675)">
         <path

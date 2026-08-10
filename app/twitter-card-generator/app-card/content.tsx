@@ -84,37 +84,48 @@ ${
           <Input
             name="site"
             title="Site"
+            value={form.site}
             onChange={handleChange}
             info="The Twitter <b>@username</b> the card should be attributed to."
           />
           <Textarea
             name="description"
             title="Description"
+            value={form.description}
             onChange={handleChange}
             max={200}
           />
-          <Input name="app_name" title="App Name" onChange={handleChange} />
+          <Input
+            name="app_name"
+            title="App Name"
+            value={form.app_name}
+            onChange={handleChange}
+          />
           <Input
             name="iphone_app_id"
             title="iPhone App ID"
+            value={form.iphone_app_id}
             onChange={handleChange}
             info="Should be the numeric representation of your app ID in the App Store (.i.e. “307234931”)"
           />
           <Input
             name="ipad_app_id"
             title="iPad App ID"
+            value={form.ipad_app_id}
             onChange={handleChange}
             info="Should be the numeric representation of your app ID in the App Store (.i.e. “307234931”)"
           />
           <Input
             name="google_play_app_id"
             title="Google Play App ID"
+            value={form.google_play_app_id}
             onChange={handleChange}
             info="Should be the numeric representation of your app ID in the Google Play (.i.e. “com.android.app”)"
           />
           <Input
             name="country"
             title="App Country (If Not Available in US App Store):"
+            value={form.country}
             onChange={handleChange}
             info="If your application is not available in the US App Store, you must set this value to the two-letter country code for the App Store that contains your application."
           />

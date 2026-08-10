@@ -52,27 +52,36 @@ export default function Content() {
         <Title title="Summary Card Generator" />
         <Description description="A Twitter Summary Card Meta Tag Generator is a tool that helps you create the meta tags that are needed for Twitter Summary Cards. Twitter Summary Cards are a type of Twitter card that can be used to display a title, description, and image when your content is shared on Twitter. </br></br>They can help to make your Tweets more visually appealing and informative, and they can also help to drive traffic to your website or blog." />
         <div className="mt-9 flex flex-col gap-y-6">
-          <Input name="title" title="Title" onChange={handleChange} />
+          <Input
+            name="title"
+            title="Title"
+            value={form.title}
+            onChange={handleChange}
+          />
           <Input
             name="site"
             title="Site"
+            value={form.site}
             onChange={handleChange}
             info="The Twitter <b>@username</b> the card should be attributed to."
           />
           <Textarea
             name="description"
             title="Description"
+            value={form.description}
             onChange={handleChange}
           />
           <Input
             name="image_url"
             title="Image URL"
+            value={form.image_url}
             onChange={handleChange}
             info="Images for this Card should have an aspect ratio of 2:1 and a minimum size of 300x157 pixels or a maximum size of 4096x4096 pixels. They must also be less than 5MB in size and in the JPG, PNG, WEBP, or GIF format."
           />
           <Textarea
             name="image_alt_text"
             title="Image Alt Text"
+            value={form.image_alt_text}
             onChange={handleChange}
             max={420}
           />
