@@ -15,46 +15,33 @@ import charset from "../json/charset.json";
 import robots from "../json/robots.json";
 import referrer from "../json/referrer.json";
 import imagePreview from "../json/imagePreview.json";
+import ogType from "../json/ogType.json";
+import ogLocale from "../json/ogLocale.json";
 import Jsonld from "../components/jsonld";
-import { escapeAttribute as e, escapeText as t } from "../lib/escape";
-const keep = (values: (string | false | undefined)[]) =>
-  values.filter((value): value is string => Boolean(value));
-const section = (comment: string, values: (string | false | undefined)[]) => {
-  const tags = keep(values);
-  return tags.length ? [`<!-- ${comment} -->`, ...tags] : [];
-};
+import PrefillUrl from "../components/prefill-url";
+import { keep } from "../lib/tags";
+import { buildFormats } from "../lib/formats";
+import type { SeoDocument } from "../lib/seo";
+import {
+  createMetaTagFormDefaults,
+  mapParsedToMetaForm,
+} from "../lib/prefill-maps";
 export default function Content() {
-  const [form, setForm] = useState({
-    title: "",
-    description: "",
-    keywords: "",
-    author: "",
-    canonical: "",
-    charset: charset[0],
-    viewport: true,
-    referrer: referrer[0],
-    format_detection: false,
-    robots: robots[0],
-    max_image_preview: imagePreview[0],
-    max_snippet: "",
-    noarchive: false,
-    nosnippet: false,
-    notranslate: false,
-    noimageindex: false,
-    googlebot: false,
-    google_verification: "",
-    bing_verification: "",
-    favicon_32: "",
-    favicon_16: "",
-    apple_touch_icon: "",
-    manifest: "",
-  });
+  const [form, setForm] = useState(createMetaTagFormDefaults());
   const handleChange = (event: any) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
   const handleChangeCheckbox = (event: any) => {
     setForm({ ...form, [event.target.name]: event.target.checked });
   };
+  // Open Graph repeats what the basic tags already say, so the shared fields
+  // fall back instead of making people type everything twice.
+  const ogTitle = form.og_title || form.title;
+  const ogDescription = form.og_description || form.description;
+  const ogUrl = form.og_url || form.canonical;
+  const hasOpenGraph = Boolean(
+    ogTitle || ogDescription || ogUrl || form.og_image || form.og_site_name,
+  );
   const directives = keep([
     form.robots,
     form.noarchive && "noarchive",
@@ -65,53 +52,45 @@ export default function Content() {
       `max-image-preview:${form.max_image_preview}`,
     form.max_snippet && `max-snippet:${form.max_snippet}`,
   ]).join(", ");
-  const data = [
-    ...keep([
-      form.charset && `<meta charset="${e(form.charset)}">`,
-      form.viewport &&
-        `<meta name="viewport" content="width=device-width, initial-scale=1">`,
-      form.title && `<title>${t(form.title)}</title>`,
-      form.description &&
-        `<meta name="description" content="${e(form.description)}">`,
-      form.keywords && `<meta name="keywords" content="${e(form.keywords)}">`,
-      form.author && `<meta name="author" content="${e(form.author)}">`,
-      form.canonical && `<link rel="canonical" href="${e(form.canonical)}">`,
-      form.referrer !== "Not set" &&
-        `<meta name="referrer" content="${e(form.referrer)}">`,
-      form.format_detection &&
-        `<meta name="format-detection" content="telephone=no">`,
-    ]),
-    ...section("Search engines", [
-      directives && `<meta name="robots" content="${e(directives)}">`,
-      form.googlebot &&
-        directives &&
-        `<meta name="googlebot" content="${e(directives)}">`,
-      form.google_verification &&
-        `<meta name="google-site-verification" content="${e(
-          form.google_verification,
-        )}">`,
-      form.bing_verification &&
-        `<meta name="msvalidate.01" content="${e(form.bing_verification)}">`,
-    ]),
-    ...section("Icons", [
-      form.favicon_32 &&
-        `<link rel="icon" type="image/png" sizes="32x32" href="${e(
-          form.favicon_32,
-        )}">`,
-      form.favicon_16 &&
-        `<link rel="icon" type="image/png" sizes="16x16" href="${e(
-          form.favicon_16,
-        )}">`,
-      form.apple_touch_icon &&
-        `<link rel="apple-touch-icon" sizes="180x180" href="${e(
-          form.apple_touch_icon,
-        )}">`,
-      form.manifest && `<link rel="manifest" href="${e(form.manifest)}">`,
-    ]),
-  ].join("\n");
+  const doc: SeoDocument = {
+    charset: form.charset,
+    viewport: form.viewport,
+    title: form.title,
+    description: form.description,
+    keywords: form.keywords,
+    author: form.author,
+    canonical: form.canonical,
+    referrer: form.referrer !== "Not set" ? form.referrer : undefined,
+    formatDetection: form.format_detection,
+    robots: directives,
+    googlebot: form.googlebot ? directives : undefined,
+    googleVerification: form.google_verification,
+    bingVerification: form.bing_verification,
+    icons: {
+      favicon32: form.favicon_32,
+      favicon16: form.favicon_16,
+      appleTouchIcon: form.apple_touch_icon,
+      manifest: form.manifest,
+    },
+    openGraph: {
+      title: ogTitle,
+      type: hasOpenGraph ? form.og_type : undefined,
+      url: ogUrl,
+      description: ogDescription,
+      siteName: form.og_site_name,
+      locale:
+        hasOpenGraph && form.og_locale !== "Not set"
+          ? form.og_locale
+          : undefined,
+      image: form.og_image,
+      imageAlt: form.og_image_alt,
+      imageWidth: form.og_image_width,
+      imageHeight: form.og_image_height,
+    },
+  };
   return (
     <>
-      <div className="xl: md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:pr-5 xl:dark:border-border">
+      <div className="min-w-0 xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:pr-5 xl:dark:border-border">
         <Breadcrumbs
           items={[
             { name: "Home", link: "/" },
@@ -124,6 +103,7 @@ export default function Content() {
         <Title title="Meta Tags Generator" />
         <Description description="A meta tags code generator is a tool that helps you create and manage the meta tags for your website. Meta tags are HTML tags that provide information about your website to search engines and other web browsers. </br></br>They can be used to improve the visibility of your website in search results, and to provide additional information about your website to visitors." />
         <div className="mt-9 flex flex-col gap-y-10">
+          <PrefillUrl onPrefill={(data) => setForm(mapParsedToMetaForm(data))} />
           <Section title="Basic">
             <Input
               name="title"
@@ -158,6 +138,80 @@ export default function Content() {
               value={form.canonical}
               onChange={handleChange}
               info="The preferred URL for this page. Tells search engines which version to index when the same content is reachable from several addresses."
+            />
+          </Section>
+          <Section title="Social (Open Graph)">
+            <Input
+              name="og_title"
+              title="OG Title"
+              value={form.og_title}
+              onChange={handleChange}
+              max={60}
+              info="Shown when the page is shared on Facebook, LinkedIn, Slack, Discord, WhatsApp and iMessage. Leave empty to reuse the <b>Title</b> above."
+            />
+            <Textarea
+              name="og_description"
+              title="OG Description"
+              value={form.og_description}
+              onChange={handleChange}
+              max={110}
+              info="Leave empty to reuse the Description above. Most platforms cut this off sooner than search results do."
+            />
+            <Input
+              name="og_url"
+              title="OG URL"
+              value={form.og_url}
+              onChange={handleChange}
+              info="The canonical address of this page as it should be shared. Leave empty to reuse the <b>Canonical URL</b> above."
+            />
+            <Select
+              name="og_type"
+              title="OG Type"
+              data={ogType}
+              value={form.og_type}
+              onChange={handleChange}
+            />
+            <Input
+              name="og_site_name"
+              title="OG Site Name"
+              value={form.og_site_name}
+              onChange={handleChange}
+              info="The name of the overall site, not this page. For example <b>IMDb</b>."
+            />
+            <Select
+              name="og_locale"
+              title="OG Locale"
+              data={ogLocale}
+              value={form.og_locale}
+              onChange={handleChange}
+            />
+            <Input
+              name="og_image"
+              title="OG Image URL"
+              value={form.og_image}
+              onChange={handleChange}
+              info="Use an absolute URL. <b>1200x630</b> is the safe size, and most platforms will not fetch images over 5MB."
+            />
+            <Input
+              name="og_image_alt"
+              title="OG Image Alt Text"
+              value={form.og_image_alt}
+              onChange={handleChange}
+            />
+            <Input
+              type="number"
+              name="og_image_width"
+              title="OG Image Width"
+              value={form.og_image_width}
+              onChange={handleChange}
+              info="Letting platforms know the size up front means the card renders on the first share instead of after the image is crawled."
+            />
+            <Input
+              type="number"
+              name="og_image_height"
+              title="OG Image Height"
+              value={form.og_image_height}
+              onChange={handleChange}
             />
           </Section>
           <Section title="Document">
@@ -292,18 +346,24 @@ export default function Content() {
       </div>
       <Output>
         <Preview
-          variant="google"
-          title={form.title}
-          description={form.description}
-          url={form.canonical}
+          items={[
+            {
+              variant: "google",
+              title: form.title,
+              description: form.description,
+              url: form.canonical,
+            },
+            {
+              variant: "og",
+              title: ogTitle,
+              description: ogDescription,
+              url: ogUrl,
+              imageUrl: form.og_image,
+              imageAlt: form.og_image_alt,
+            },
+          ]}
         />
-        <Code
-          data={data}
-          title="Code"
-          description={
-            "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
-          }
-        />
+        <Code title="Code" formats={buildFormats(doc)} />
       </Output>
       <script
         type="application/ld+json"

@@ -40,14 +40,12 @@ export default function Jsonld(Props: Props) {
     {
       "@context": "https://schema.org/",
       "@type": "BreadcrumbList",
-      itemListElement: [
-        breadcrumb.map((item: any) => ({
-          "@type": "ListItem",
-          position: item.position,
-          name: item.name,
-          item: item.item,
-        })),
-      ],
+      itemListElement: breadcrumb.map((item: any) => ({
+        "@type": "ListItem",
+        position: item.position,
+        name: item.name,
+        item: item.item,
+      })),
     },
   ];
 }

@@ -65,8 +65,8 @@ body {
 }
 .pages > a:nth-child(4) > div,
 .pages > a:nth-child(4) > div > svg > g > path {
-  background-color: #f3f8d6 !important;
-  stroke: #a6af62 !important;
+  background-color: #f3e8b0 !important;
+  stroke: #b89a3a !important;
 }
 .customShadow {
   box-shadow:
@@ -106,10 +106,25 @@ pre {
    let the code sit on the panel background instead of the theme's own. */
 .shiki {
   display: block;
-  overflow-x: unset;
-  white-space: break-spaces;
+  width: max-content;
+  min-width: 100%;
+  white-space: pre;
   background-color: transparent !important;
   font-size: 14px;
   letter-spacing: 0.1px;
+}
+.shiki:focus {
+  outline: none;
+}
+@keyframes bezier-slide {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 24px);
+  }
+}
+.bezier-ball {
+  animation: bezier-slide 2s infinite;
 }
 /* -------------------------------------------------------------------------------------------- */

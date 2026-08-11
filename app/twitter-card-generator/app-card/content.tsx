@@ -9,7 +9,10 @@ import Breadcrumbs from "../../components/breadcrumbs";
 import Title from "../../components/title";
 import Description from "../../components/description";
 import Jsonld from "../../components/jsonld";
-import { escapeAttribute as e } from "../../lib/escape";
+import PrefillUrl from "../../components/prefill-url";
+import { buildFormats } from "../../lib/formats";
+import type { SeoDocument } from "../../lib/seo";
+import { mapParsedToTwitterForm } from "../../lib/prefill-maps";
 export default function Content() {
   const [form, setForm] = useState({
     site: "",
@@ -23,45 +26,28 @@ export default function Content() {
   const handleChange = (event: any) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-  const handleChangeCheckbox = (event: any) => {
-    setForm({ ...form, [event.target.name]: event.target.checked });
+  // X reads these, but nothing else does. The Open Graph copies are what make
+  // the link unfurl on Facebook, LinkedIn, Slack, Discord, WhatsApp and iMessage.
+  const hasOpenGraph = Boolean(form.app_name || form.description);
+  const doc: SeoDocument = {
+    twitter: {
+      card: "app",
+      site: form.site,
+      description: form.description,
+      app: {
+        name: form.app_name,
+        iphone: form.iphone_app_id,
+        ipad: form.ipad_app_id,
+        googleplay: form.google_play_app_id,
+        country: form.country,
+      },
+    },
+    openGraph: {
+      title: form.app_name,
+      type: hasOpenGraph ? "website" : undefined,
+      description: form.description,
+    },
   };
-  const data = `<meta name="twitter:card" content="app">\n${
-    form.site && `<meta name="twitter:site" content="@${e(form.site)}">\n`
-  }${
-    form.description &&
-    `<meta name="twitter:description" content="${e(form.description)}">\n`
-  }
-<!-- Iphone -->
-${
-  form.app_name &&
-  `<meta name="twitter:app:name:iphone" content="${e(form.app_name)}">\n`
-}${
-    form.iphone_app_id &&
-    `<meta name="twitter:app:id:iphone" content="${e(form.iphone_app_id)}">\n`
-  }
-<!-- Ipad --> 
-${
-  form.app_name &&
-  `<meta name="twitter:app:name:ipad" content="${e(form.app_name)}">\n`
-}${
-    form.ipad_app_id &&
-    `<meta name="twitter:app:id:ipad" content="${e(form.ipad_app_id)}">\n`
-  }
-<!-- Google Play --> 
-${
-  form.app_name &&
-  `<meta name="twitter:app:name:googleplay" content="${e(form.app_name)}">\n`
-}${
-    form.google_play_app_id &&
-    `<meta name="twitter:app:id:googleplay" content="${e(
-      form.google_play_app_id,
-    )}">\n`
-  }
-${
-  form.country &&
-  `<meta name="twitter:app:country" content="${e(form.country)}">\n`
-}`;
   return (
     <>
       <div className="md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:pr-5 xl:dark:border-border">
@@ -81,6 +67,17 @@ ${
         <Title title="App Card Generator" />
         <Description description="A Twitter App Card Meta Tag Generator is a tool that helps you create the meta tags that are needed for Twitter App Cards. </br></br>Twitter App Cards are rich media experiences that can be attached to Tweets, such as images, videos, and product information. They can help to make your Tweets more visually appealing and informative, and they can also help to drive traffic to your mobile app." />
         <div className="mt-9 flex flex-col gap-y-6">
+          <PrefillUrl
+            onPrefill={(data) => {
+              const shared = mapParsedToTwitterForm(data);
+              setForm((current) => ({
+                ...current,
+                site: shared.site,
+                description: shared.description,
+                app_name: shared.title || current.app_name,
+              }));
+            }}
+          />
           <Input
             name="site"
             title="Site"
@@ -133,18 +130,16 @@ ${
       </div>
       <Output>
         <Preview
-          variant="app"
-          appName={form.app_name}
-          description={form.description}
-          site={form.site}
+          items={[
+            {
+              variant: "app",
+              appName: form.app_name,
+              description: form.description,
+              site: form.site,
+            },
+          ]}
         />
-        <Code
-          data={data}
-          title="Code"
-          description={
-            "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
-          }
-        />
+        <Code title="Code" formats={buildFormats(doc)} />
       </Output>
       <script
         type="application/ld+json"

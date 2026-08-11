@@ -25,6 +25,12 @@ const config: Config = {
       colors: {
         primary: "#131313",
         secondary: "#2A2A2A",
+        // Dark theme surfaces, ordered darkest to lightest. The page sits
+        // behind everything and raised surfaces step up from it.
+        darkPage: "#0E0E0E",
+        darkSurface: "#1A1A1A",
+        darkSurfaceRaised: "#242424",
+        darkSurfaceActive: "#2E2E2E",
         green: "#BFFD52",
         white: "#FFFFFF",
         gray: "#B9B9B9",

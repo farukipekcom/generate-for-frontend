@@ -9,7 +9,10 @@ import Breadcrumbs from "../../components/breadcrumbs";
 import Title from "../../components/title";
 import Description from "../../components/description";
 import Jsonld from "../../components/jsonld";
-import { escapeAttribute as e } from "../../lib/escape";
+import PrefillUrl from "../../components/prefill-url";
+import { buildFormats } from "../../lib/formats";
+import type { SeoDocument } from "../../lib/seo";
+import { mapParsedToTwitterForm } from "../../lib/prefill-maps";
 export default function Content() {
   const [form, setForm] = useState({
     title: "",
@@ -21,18 +24,28 @@ export default function Content() {
   const handleChange = (event: any) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-  const data = `<meta name="twitter:card" content="summary">\n${
-    form.title && `<meta name="twitter:title" content="${e(form.title)}">\n`
-  }${form.site && `<meta name="twitter:site" content="@${e(form.site)}">\n`}${
-    form.description &&
-    `<meta name="twitter:description" content="${e(form.description)}">\n`
-  }${
-    form.image_url &&
-    `<meta name="twitter:image" content="${e(form.image_url)}">\n`
-  }${
-    form.image_alt_text &&
-    `<meta name="twitter:image:alt" content="${e(form.image_alt_text)}">\n`
-  }`;
+  // X reads these, but nothing else does. The Open Graph copies are what make
+  // the link unfurl on Facebook, LinkedIn, Slack, Discord, WhatsApp and iMessage.
+  const hasOpenGraph = Boolean(
+    form.title || form.description || form.image_url,
+  );
+  const doc: SeoDocument = {
+    twitter: {
+      card: "summary",
+      title: form.title,
+      site: form.site,
+      description: form.description,
+      image: form.image_url,
+      imageAlt: form.image_alt_text,
+    },
+    openGraph: {
+      title: form.title,
+      type: hasOpenGraph ? "website" : undefined,
+      description: form.description,
+      image: form.image_url,
+      imageAlt: form.image_alt_text,
+    },
+  };
   return (
     <>
       <div className="md:w-full lg:w-full xl:w-1/2 xl:border-r xl:border-solid xl:border-borderLight xl:pr-5 xl:dark:border-border">
@@ -52,6 +65,14 @@ export default function Content() {
         <Title title="Summary Card Generator" />
         <Description description="A Twitter Summary Card Meta Tag Generator is a tool that helps you create the meta tags that are needed for Twitter Summary Cards. Twitter Summary Cards are a type of Twitter card that can be used to display a title, description, and image when your content is shared on Twitter. </br></br>They can help to make your Tweets more visually appealing and informative, and they can also help to drive traffic to your website or blog." />
         <div className="mt-9 flex flex-col gap-y-6">
+          <PrefillUrl
+            onPrefill={(data) =>
+              setForm((current) => ({
+                ...current,
+                ...mapParsedToTwitterForm(data),
+              }))
+            }
+          />
           <Input
             name="title"
             title="Title"
@@ -89,20 +110,18 @@ export default function Content() {
       </div>
       <Output>
         <Preview
-          variant="summary"
-          title={form.title}
-          description={form.description}
-          site={form.site}
-          imageUrl={form.image_url}
-          imageAlt={form.image_alt_text}
+          items={[
+            {
+              variant: "summary",
+              title: form.title,
+              description: form.description,
+              site: form.site,
+              imageUrl: form.image_url,
+              imageAlt: form.image_alt_text,
+            },
+          ]}
         />
-        <Code
-          data={data}
-          title="Code"
-          description={
-            "Insert the following code into the <b>&#60;head&#62;</b> section of your webpage."
-          }
-        />
+        <Code title="Code" formats={buildFormats(doc)} />
       </Output>
       <script
         type="application/ld+json"

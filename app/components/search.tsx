@@ -34,7 +34,11 @@ export default function Search(Props: Props) {
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
     if (needle === "") return [];
-    return allPages.filter((page) => page.title.toLowerCase().includes(needle));
+    return allPages.filter(
+      (page) =>
+        page.title.toLowerCase().includes(needle) ||
+        page.description.toLowerCase().includes(needle),
+    );
   }, [query]);
 
   const isOpen = open && query.trim() !== "";
@@ -75,7 +79,9 @@ export default function Search(Props: Props) {
     }
     if (event.key === "ArrowUp") {
       event.preventDefault();
-      setActiveIndex((index) => (index - 1 + results.length) % results.length);
+      setActiveIndex(
+        (index) => (index - 1 + results.length) % results.length,
+      );
     }
   };
 
@@ -112,7 +118,9 @@ export default function Search(Props: Props) {
           role="combobox"
           aria-autocomplete="list"
           aria-expanded={isOpen}
-          aria-controls={isOpen && results.length > 0 ? listboxId : undefined}
+          aria-controls={
+            isOpen && results.length > 0 ? listboxId : undefined
+          }
           aria-activedescendant={
             isOpen && results.length > 0 ? optionId(currentIndex) : undefined
           }
@@ -142,9 +150,7 @@ export default function Search(Props: Props) {
                   aria-selected={index === currentIndex}
                   onMouseEnter={() => setActiveIndex(index)}
                   className={`flex h-10 items-center rounded-small ${
-                    index === currentIndex
-                      ? "bg-[#F4F4F4] dark:bg-secondary"
-                      : ""
+                    index === currentIndex ? "bg-[#F4F4F4] dark:bg-secondary" : ""
                   }`}
                 >
                   <Link

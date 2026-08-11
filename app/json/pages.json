@@ -48,5 +48,113 @@
         "colorDark": "#C88683"
       }
     ]
+  },
+  {
+    "id": "03.",
+    "title": "JSON-LD Generator",
+    "description": "A JSON-LD generator helps you create structured data markup for rich search results.",
+    "link": "/json-ld-generator",
+    "color": "#D4E4BC",
+    "colorDark": "#8BAF6E",
+    "pages": [
+      {
+        "id": "01.",
+        "title": "Article",
+        "description": "Blog posts, news stories, and editorial content.",
+        "link": "/json-ld-generator/article",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "02.",
+        "title": "FAQ",
+        "description": "Questions and answers shown as an accordion in search.",
+        "link": "/json-ld-generator/faq",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "03.",
+        "title": "Product",
+        "description": "Name, price, brand, and availability for products.",
+        "link": "/json-ld-generator/product",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "04.",
+        "title": "Organization",
+        "description": "Company or brand details with logo and contact info.",
+        "link": "/json-ld-generator/organization",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "05.",
+        "title": "Recipe",
+        "description": "Ingredients, instructions, prep time, and yield.",
+        "link": "/json-ld-generator/recipe",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "06.",
+        "title": "Event",
+        "description": "Dates, location, and attendance mode for events.",
+        "link": "/json-ld-generator/event",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "07.",
+        "title": "Breadcrumb",
+        "description": "Page hierarchy shown as a trail in search results.",
+        "link": "/json-ld-generator/breadcrumb",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      }
+    ]
+  },
+  {
+    "id": "04.",
+    "title": "CSS Generator",
+    "description": "Visual CSS generators for box shadows, gradients, border radius, and easing curves.",
+    "link": "/css-generator",
+    "color": "#F3E8B0",
+    "colorDark": "#B89A3A",
+    "pages": [
+      {
+        "id": "01.",
+        "title": "Box Shadow",
+        "description": "Offset, blur, spread, color, and inset.",
+        "link": "/css-generator/box-shadow",
+        "color": "#F3E8B0",
+        "colorDark": "#B89A3A"
+      },
+      {
+        "id": "02.",
+        "title": "Gradient",
+        "description": "Linear and radial backgrounds with color stops.",
+        "link": "/css-generator/gradient",
+        "color": "#F3E8B0",
+        "colorDark": "#B89A3A"
+      },
+      {
+        "id": "03.",
+        "title": "Border Radius",
+        "description": "Uniform or per-corner rounded corners.",
+        "link": "/css-generator/border-radius",
+        "color": "#F3E8B0",
+        "colorDark": "#B89A3A"
+      },
+      {
+        "id": "04.",
+        "title": "Cubic Bezier",
+        "description": "Easing curves for transitions and animations.",
+        "link": "/css-generator/cubic-bezier",
+        "color": "#F3E8B0",
+        "colorDark": "#B89A3A"
+      }
+    ]
   }
 ]

@@ -85,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`flex ${inter.className} ml-5 mr-5 flex flex-col rounded-normal bg-white dark:bg-secondary lg:m-5 lg:flex-row`}
+        className={`flex ${inter.className} ml-5 mr-5 flex flex-col rounded-normal bg-white dark:bg-darkPage lg:m-5 lg:flex-row`}
       >
         <Providers>
           {children}

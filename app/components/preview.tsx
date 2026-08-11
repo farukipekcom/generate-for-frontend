@@ -2,9 +2,16 @@
 import React, { useEffect, useState } from "react";
 import Title from "./title";
 import Description from "./description";
-type Variant = "google" | "summary" | "summary_large_image" | "player" | "app";
-interface Props {
+type Variant =
+  | "google"
+  | "og"
+  | "summary"
+  | "summary_large_image"
+  | "player"
+  | "app";
+export interface PreviewItem {
   variant: Variant;
+  label?: string;
   title?: string;
   description?: string;
   site?: string;
@@ -13,6 +20,17 @@ interface Props {
   appName?: string;
   url?: string;
 }
+interface Props {
+  items: PreviewItem[];
+}
+const defaultLabels: Record<Variant, string> = {
+  google: "Google",
+  og: "Social",
+  summary: "Summary",
+  summary_large_image: "Large image",
+  player: "Player",
+  app: "App",
+};
 // Runs against half-typed URLs on every keystroke, so anything unparseable
 // falls back to the placeholder domain rather than throwing.
 function readUrl(value?: string) {
@@ -86,7 +104,7 @@ function CardImage({
     />
   );
 }
-function GooglePreview({ title, description, url }: Props) {
+function GooglePreview({ title, description, url }: PreviewItem) {
   const heading = placeholder(title, "Your page title will appear here");
   const snippet = placeholder(
     description,
@@ -129,6 +147,51 @@ function GooglePreview({ title, description, url }: Props) {
     </div>
   );
 }
+// Roughly the Facebook/LinkedIn unfurl: 1.91:1 image over a tinted caption bar.
+function OpenGraphPreview({
+  title,
+  description,
+  url,
+  imageUrl,
+  imageAlt,
+}: PreviewItem) {
+  const heading = placeholder(title, "Your Open Graph title");
+  const body = placeholder(
+    description,
+    "Your Open Graph description will appear here.",
+  );
+  const site = readUrl(url);
+  return (
+    <div className="overflow-hidden rounded-lg border border-[#DADDE1] dark:border-[#3E4042]">
+      <CardImage
+        src={imageUrl}
+        alt={imageAlt}
+        className="aspect-[1.91/1] w-full"
+      />
+      <div className="bg-[#F2F3F5] px-3 py-2 dark:bg-[#3A3B3C]">
+        <div className="truncate text-xs uppercase tracking-wide text-[#606770] dark:text-[#B0B3B8]">
+          {site?.host || "example.com"}
+        </div>
+        <div
+          className={`mt-0.5 line-clamp-1 text-[15px] font-semibold leading-5 ${
+            heading.empty
+              ? "text-[#8B98A5]"
+              : "text-[#1C1E21] dark:text-[#E4E6EB]"
+          }`}
+        >
+          {heading.text}
+        </div>
+        <p
+          className={`mt-0.5 line-clamp-1 text-[13px] leading-4 ${
+            body.empty ? "text-[#8B98A5]" : "text-[#606770] dark:text-[#B0B3B8]"
+          }`}
+        >
+          {body.text}
+        </p>
+      </div>
+    </div>
+  );
+}
 function TwitterFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-[#CFD9DE] dark:border-[#333639]">
@@ -141,7 +204,7 @@ function TwitterMeta({
   description,
   site,
   stacked,
-}: Props & { stacked?: boolean }) {
+}: PreviewItem & { stacked?: boolean }) {
   const heading = placeholder(title, "Your card title");
   const body = placeholder(
     description,
@@ -188,7 +251,7 @@ function PlayButton() {
     </div>
   );
 }
-function AppPreview({ appName, description, site }: Props) {
+function AppPreview({ appName, description, site }: PreviewItem) {
   const name = placeholder(appName, "Your app name");
   const body = placeholder(
     description,
@@ -230,42 +293,71 @@ function AppPreview({ appName, description, site }: Props) {
     </TwitterFrame>
   );
 }
+function render(item: PreviewItem) {
+  const { variant, imageUrl, imageAlt } = item;
+  if (variant === "google") return <GooglePreview {...item} />;
+  if (variant === "og") return <OpenGraphPreview {...item} />;
+  if (variant === "app") return <AppPreview {...item} />;
+  if (variant === "summary") {
+    return (
+      <TwitterFrame>
+        <div className="flex items-stretch">
+          <CardImage
+            src={imageUrl}
+            alt={imageAlt}
+            className="h-[129px] w-[129px] shrink-0 border-r border-[#CFD9DE] dark:border-[#333639]"
+          />
+          <TwitterMeta {...item} />
+        </div>
+      </TwitterFrame>
+    );
+  }
+  return (
+    <TwitterFrame>
+      <div className="relative">
+        <CardImage
+          src={imageUrl}
+          alt={imageAlt}
+          className="aspect-[2/1] w-full"
+        />
+        {variant === "player" && <PlayButton />}
+      </div>
+      <div className="border-t border-[#CFD9DE] dark:border-[#333639]">
+        <TwitterMeta {...item} stacked />
+      </div>
+    </TwitterFrame>
+  );
+}
 export default function Preview(Props: Props) {
-  const { variant, imageUrl, imageAlt } = Props;
+  const { items } = Props;
+  const [active, setActive] = useState(0);
+  const current = items[active] ?? items[0];
   return (
     <div>
       <Title title="Preview" />
       <Description description="An approximation of how your page will look when it is shared. Actual rendering varies by platform." />
+      {items.length > 1 && (
+        <div role="tablist" aria-label="Preview type" className="mt-4 flex gap-x-2">
+          {items.map((item, index) => (
+            <button
+              key={item.variant}
+              type="button"
+              role="tab"
+              aria-selected={index === active}
+              onClick={() => setActive(index)}
+              className={`rounded-small px-3 py-1.5 text-sm font-semibold transition-colors ${
+                index === active
+                  ? "bg-primary text-white dark:bg-white dark:text-primary"
+                  : "bg-headerLight text-grayLight hover:bg-borderLight dark:bg-secondary dark:text-gray dark:hover:bg-border"
+              }`}
+            >
+              {item.label ?? defaultLabels[item.variant]}
+            </button>
+          ))}
+        </div>
+      )}
       <div className="customShadow mt-6 w-full rounded-lg border border-borderLight bg-white p-6 dark:border-border dark:bg-primary">
-        {variant === "google" && <GooglePreview {...Props} />}
-        {variant === "summary" && (
-          <TwitterFrame>
-            <div className="flex items-stretch">
-              <CardImage
-                src={imageUrl}
-                alt={imageAlt}
-                className="h-[129px] w-[129px] shrink-0 border-r border-[#CFD9DE] dark:border-[#333639]"
-              />
-              <TwitterMeta {...Props} />
-            </div>
-          </TwitterFrame>
-        )}
-        {(variant === "summary_large_image" || variant === "player") && (
-          <TwitterFrame>
-            <div className="relative">
-              <CardImage
-                src={imageUrl}
-                alt={imageAlt}
-                className="aspect-[2/1] w-full"
-              />
-              {variant === "player" && <PlayButton />}
-            </div>
-            <div className="border-t border-[#CFD9DE] dark:border-[#333639]">
-              <TwitterMeta {...Props} stacked />
-            </div>
-          </TwitterFrame>
-        )}
-        {variant === "app" && <AppPreview {...Props} />}
+        {render(current)}
       </div>
     </div>
   );
