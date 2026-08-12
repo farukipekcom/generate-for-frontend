@@ -106,9 +106,9 @@ pre {
    let the code sit on the panel background instead of the theme's own. */
 .shiki {
   display: block;
-  width: max-content;
-  min-width: 100%;
-  white-space: pre;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
   background-color: transparent !important;
   font-size: 14px;
   letter-spacing: 0.1px;

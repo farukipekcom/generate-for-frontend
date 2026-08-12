@@ -16,7 +16,7 @@ export default function Content() {
         ]}
       />
       <Title title="JSON-LD Generator" />
-      <Description description="A JSON-LD generator helps you create structured data markup that search engines use for rich results. Add schema for articles, FAQs, products, organizations, recipes, events, and breadcrumb trails without writing JSON by hand." />
+      <Description description="A JSON-LD generator helps you create structured data markup that search engines use for rich results. Add schema for articles, FAQs, products, organizations, local businesses, websites, recipes, events, and breadcrumb trails without writing JSON by hand." />
       <div className="pages mt-12 flex w-full flex-col gap-y-6 lg:flex-row lg:flex-wrap lg:justify-between xl:flex-row xl:gap-x-6">
         {category?.pages?.map((item) => (
           <Card

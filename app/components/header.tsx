@@ -18,7 +18,7 @@ export default function Header() {
         mobileMenuActive === true
           ? "fixed z-50 flex h-[calc(100%-0px)] flex-col justify-between bg-white pb-5 pt-5 dark:bg-secondary lg:pt-0"
           : "z-50 bg-white pt-5 dark:bg-secondary lg:p-0"
-      } fixed flex w-[calc(100%-40px)] flex-col lg:h-[calc(100vh-40px)] lg:w-[280px] lg:min-w-[280px]`}
+      } fixed flex w-[calc(100%-40px)] flex-col overflow-hidden rounded-normal lg:h-[calc(100vh-40px)] lg:w-[280px] lg:min-w-[280px]`}
     >
       <div className="flex h-[calc(100%-0px)] flex-col rounded-normal bg-primary p-4 dark:bg-darkSurface">
         <div className="flex items-center justify-between">

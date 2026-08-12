@@ -64,6 +64,29 @@ export interface BreadcrumbItem {
   name: string;
   url: string;
 }
+export interface LocalBusinessForm {
+  name: string;
+  url: string;
+  description: string;
+  telephone: string;
+  email: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  openingHours: string;
+  latitude: string;
+  longitude: string;
+  priceRange: string;
+  image: string;
+}
+export interface WebSiteForm {
+  name: string;
+  url: string;
+  description: string;
+  searchUrl: string;
+}
 export function buildArticle(form: ArticleForm) {
   const headline = s(form.headline);
   if (!headline) return null;
@@ -207,6 +230,72 @@ export function buildEvent(form: EventForm) {
             address: locationAddress,
           }
         : undefined,
+  };
+}
+export function buildLocalBusiness(form: LocalBusinessForm) {
+  const name = s(form.name);
+  if (!name) return null;
+  const streetAddress = s(form.streetAddress);
+  const addressLocality = s(form.addressLocality);
+  const addressRegion = s(form.addressRegion);
+  const postalCode = s(form.postalCode);
+  const addressCountry = s(form.addressCountry);
+  const latitude = s(form.latitude);
+  const longitude = s(form.longitude);
+  const hasAddress =
+    streetAddress ||
+    addressLocality ||
+    addressRegion ||
+    postalCode ||
+    addressCountry;
+  return {
+    "@context": context,
+    "@type": "LocalBusiness",
+    name,
+    url: s(form.url),
+    description: s(form.description),
+    telephone: s(form.telephone),
+    email: s(form.email),
+    image: s(form.image),
+    priceRange: s(form.priceRange),
+    openingHours: s(form.openingHours),
+    address: hasAddress
+      ? {
+          "@type": "PostalAddress",
+          streetAddress,
+          addressLocality,
+          addressRegion,
+          postalCode,
+          addressCountry,
+        }
+      : undefined,
+    geo:
+      latitude && longitude
+        ? {
+            "@type": "GeoCoordinates",
+            latitude,
+            longitude,
+          }
+        : undefined,
+  };
+}
+export function buildWebSite(form: WebSiteForm) {
+  const name = s(form.name);
+  if (!name) return null;
+  const searchUrl = s(form.searchUrl);
+  return {
+    "@context": context,
+    "@type": "WebSite",
+    name,
+    url: s(form.url),
+    description: s(form.description),
+    potentialAction: searchUrl
+      ? {
+          "@type": "SearchAction",
+          target: searchUrl,
+          "query-input": "required name=search_term_string",
+        }
+      : undefined,
   };
 }
 export function buildBreadcrumb(items: BreadcrumbItem[]) {

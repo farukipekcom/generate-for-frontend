@@ -85,15 +85,12 @@ export default function Code(Props: Props) {
         </div>
       )}
       <div
-        className={`customShadow relative mt-6 w-full min-w-0 overflow-x-auto overscroll-x-contain rounded-lg bg-secondary p-6 dark:bg-primary ${
+        className={`customShadow relative mt-6 w-full overflow-auto rounded-lg bg-secondary p-6 dark:bg-primary ${
           copied && "bg-zinc-900 dark:ring-1 dark:ring-green"
         }`}
       >
         {highlighted ? (
-          <div
-            className="min-w-0"
-            dangerouslySetInnerHTML={{ __html: highlighted }}
-          />
+          <div dangerouslySetInnerHTML={{ __html: highlighted }} />
         ) : (
           <pre className="shiki">
             <code>{current.code}</code>

@@ -112,13 +112,29 @@
         "link": "/json-ld-generator/breadcrumb",
         "color": "#D4E4BC",
         "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "08.",
+        "title": "Local Business",
+        "description": "Address, hours, and contact info for local listings.",
+        "link": "/json-ld-generator/local-business",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
+      },
+      {
+        "id": "09.",
+        "title": "WebSite",
+        "description": "Site identity with optional sitelinks search box.",
+        "link": "/json-ld-generator/website",
+        "color": "#D4E4BC",
+        "colorDark": "#8BAF6E"
       }
     ]
   },
   {
     "id": "04.",
     "title": "CSS Generator",
-    "description": "Visual CSS generators for box shadows, gradients, border radius, and easing curves.",
+    "description": "Visual CSS generators for box shadows, gradients, border radius, easing curves, and text shadows.",
     "link": "/css-generator",
     "color": "#F3E8B0",
     "colorDark": "#B89A3A",
@@ -154,7 +170,31 @@
         "link": "/css-generator/cubic-bezier",
         "color": "#F3E8B0",
         "colorDark": "#B89A3A"
+      },
+      {
+        "id": "05.",
+        "title": "Text Shadow",
+        "description": "Offset, blur, and color for text effects.",
+        "link": "/css-generator/text-shadow",
+        "color": "#F3E8B0",
+        "colorDark": "#B89A3A"
       }
     ]
+  },
+  {
+    "id": "05.",
+    "title": "robots.txt Generator",
+    "description": "Create a robots.txt file with crawler rules, allow and disallow paths, and sitemap URLs.",
+    "link": "/robots-txt-generator",
+    "color": "#D8CCE8",
+    "colorDark": "#8B6FA8"
+  },
+  {
+    "id": "06.",
+    "title": "Open Graph Generator",
+    "description": "Open Graph meta tags for Facebook, LinkedIn, Slack, and other social platforms.",
+    "link": "/open-graph-generator",
+    "color": "#C8D8F0",
+    "colorDark": "#5B7FB8"
   }
 ]

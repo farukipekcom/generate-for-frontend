@@ -8,6 +8,8 @@ type Variant =
   | "faq"
   | "product"
   | "organization"
+  | "localBusiness"
+  | "website"
   | "recipe"
   | "event"
   | "breadcrumb";
@@ -36,6 +38,20 @@ interface OrganizationProps {
   description?: string;
   url?: string;
 }
+interface LocalBusinessProps {
+  variant: "localBusiness";
+  name?: string;
+  description?: string;
+  telephone?: string;
+  addressLocality?: string;
+}
+interface WebsiteProps {
+  variant: "website";
+  name?: string;
+  description?: string;
+  url?: string;
+  searchUrl?: string;
+}
 interface RecipeProps {
   variant: "recipe";
   name?: string;
@@ -60,6 +76,8 @@ type Props =
   | FaqProps
   | ProductProps
   | OrganizationProps
+  | LocalBusinessProps
+  | WebsiteProps
   | RecipeProps
   | EventProps
   | BreadcrumbProps;
@@ -194,6 +212,61 @@ function OrganizationPreview({ name, description, url }: OrganizationProps) {
     </div>
   );
 }
+function LocalBusinessPreview({
+  name,
+  description,
+  telephone,
+  addressLocality,
+}: LocalBusinessProps) {
+  const title = placeholder(name, "Business name");
+  const body = placeholder(description, "Business description");
+  return (
+    <div>
+      <div
+        className={`text-lg font-semibold ${
+          title.empty ? "text-grayLight" : "text-primary dark:text-white"
+        }`}
+      >
+        {title.text}
+      </div>
+      <div className="mt-1 text-sm text-grayLight">
+        {addressLocality?.trim() || "City"} · {telephone?.trim() || "Phone"}
+      </div>
+      <p className="mt-2 line-clamp-2 text-sm text-grayLight">{body.text}</p>
+    </div>
+  );
+}
+function WebsitePreview({ name, description, url, searchUrl }: WebsiteProps) {
+  const title = placeholder(name, "Website name");
+  const body = placeholder(description, "Website description");
+  return (
+    <div>
+      <div
+        className={`text-xl leading-7 ${
+          title.empty
+            ? "text-[#9AA0A6] dark:text-gray"
+            : "text-[#1A0DAB] dark:text-[#8AB4F8]"
+        }`}
+      >
+        {title.text}
+      </div>
+      <div className="mt-1 truncate text-sm text-[#006621] dark:text-[#5BB974]">
+        {url?.trim() || "https://example.com"}
+      </div>
+      <p className="mt-1 line-clamp-2 text-sm text-[#4D5156] dark:text-[#BDC1C6]">
+        {body.text}
+      </p>
+      {searchUrl?.trim() && (
+        <div className="mt-4 flex items-center gap-x-2 rounded-small border border-borderLight px-3 py-2 dark:border-border">
+          <span className="text-sm text-grayLight">Search</span>
+          <span className="flex-1 text-sm text-[#9AA0A6] dark:text-gray">
+            Search {title.text}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
 function RecipePreview({
   name,
   description,
@@ -286,6 +359,10 @@ export default function JsonLdPreview(Props: Props) {
         {Props.variant === "organization" && (
           <OrganizationPreview {...Props} />
         )}
+        {Props.variant === "localBusiness" && (
+          <LocalBusinessPreview {...Props} />
+        )}
+        {Props.variant === "website" && <WebsitePreview {...Props} />}
         {Props.variant === "recipe" && <RecipePreview {...Props} />}
         {Props.variant === "event" && <EventPreview {...Props} />}
         {Props.variant === "breadcrumb" && <BreadcrumbPreview {...Props} />}

@@ -59,6 +59,53 @@ export function createMetaTagFormDefaults() {
   };
 }
 export type MetaTagForm = ReturnType<typeof createMetaTagFormDefaults>;
+export function createOpenGraphFormDefaults() {
+  return {
+    title: "",
+    description: "",
+    canonical: "",
+    og_title: "",
+    og_description: "",
+    og_url: "",
+    og_type: ogType[0],
+    og_site_name: "",
+    og_locale: ogLocale[0],
+    og_image: "",
+    og_image_alt: "",
+    og_image_width: "",
+    og_image_height: "",
+  };
+}
+export type OpenGraphForm = ReturnType<typeof createOpenGraphFormDefaults>;
+export function mapParsedToOpenGraphForm(
+  parsed: ParsedPageMeta,
+): OpenGraphForm {
+  const og = parsed.openGraph ?? {};
+  const ogTitle =
+    og.title && og.title !== parsed.title ? og.title : "";
+  const ogDescription =
+    og.description && og.description !== parsed.description
+      ? og.description
+      : "";
+  const ogUrl =
+    og.url && og.url !== parsed.canonical ? og.url : "";
+  return {
+    ...createOpenGraphFormDefaults(),
+    title: parsed.title ?? "",
+    description: parsed.description ?? "",
+    canonical: parsed.canonical ?? parsed.url,
+    og_title: ogTitle,
+    og_description: ogDescription,
+    og_url: ogUrl,
+    og_type: pickOption(og.type, ogType, ogType[0]),
+    og_site_name: og.siteName ?? "",
+    og_locale: pickOption(og.locale, ogLocale, ogLocale[0]),
+    og_image: og.image ?? parsed.twitter?.image ?? "",
+    og_image_alt: og.imageAlt ?? parsed.twitter?.imageAlt ?? "",
+    og_image_width: og.imageWidth ?? "",
+    og_image_height: og.imageHeight ?? "",
+  };
+}
 export function mapParsedToMetaForm(parsed: ParsedPageMeta): MetaTagForm {
   const og = parsed.openGraph ?? {};
   const icons = parsed.icons ?? {};
