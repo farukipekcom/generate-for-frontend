@@ -20,7 +20,7 @@ export default function Content() {
       />
       <Title title="Twitter Card Generator" />
       <Description description="A Twitter card meta tag generator is a tool that helps you create the meta tags that are needed for Twitter cards. Twitter cards are rich media experiences that can be attached to Tweets, such as images, videos, and product information. They can help to make your Tweets more visually appealing and informative, and they can also help to drive traffic to your website.</br></br>The Twitter card meta tag generator can be a valuable tool for any website owner who wants to add Twitter cards to their Tweets. It is a quick and easy way to create the meta tags that are needed, without having to learn any HTML or CSS." />
-      <div className="pages mt-12 flex w-full flex-col gap-y-6 lg:flex-row lg:flex-wrap lg:justify-between xl:flex-row xl:gap-x-6">
+      <div className="pages mt-12 flex w-full flex-col gap-6 lg:flex-row lg:flex-wrap">
         {category?.pages?.map((item) => {
           return (
             <Card

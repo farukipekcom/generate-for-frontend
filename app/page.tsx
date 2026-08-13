@@ -27,7 +27,7 @@ export default function Home() {
         coding needs, including meta tags, Twitter cards, CSS, HTML, and more.
         Start generating code like a pro!
       </p>
-      <div className="pages mt-12 flex w-full flex-col gap-y-6 lg:flex-row lg:flex-wrap lg:justify-between xl:flex-row xl:flex-nowrap xl:gap-x-6">
+      <div className="pages mt-12 flex w-full flex-col gap-6 lg:flex-row lg:flex-wrap">
         {pages.map((item) => {
           return (
             <Card

@@ -17,7 +17,7 @@ export default function Content() {
       />
       <Title title="CSS Generator" />
       <Description description="Visual CSS generators for common properties. Tweak values with sliders, see the result instantly, and copy the CSS or Tailwind class for box shadows, gradients, border radius, easing curves, and text shadows." />
-      <div className="pages mt-12 flex w-full flex-col gap-y-6 lg:flex-row lg:flex-wrap lg:justify-between xl:flex-row xl:gap-x-6">
+      <div className="pages mt-12 flex w-full flex-col gap-6 lg:flex-row lg:flex-wrap">
         {category?.pages?.map((item) => (
           <Card
             key={item.link}
