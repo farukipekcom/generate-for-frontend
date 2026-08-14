@@ -4,7 +4,6 @@ import Link from "next/link";
 import Toggle from "./toggle";
 import Search from "./search";
 import Logo from "./icons/logo";
-import BuyMeACoffee from "./icons/buymeacoffee";
 import Menu from "./icons/menu";
 export default function Header() {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
@@ -41,23 +40,11 @@ export default function Header() {
           mobileMenuActive={mobileMenuActive}
           onchangeActive={() => setMobileMenuActive(false)}
         />
-        <div className="relative flex items-center md:justify-center">
-          <Link
-            href="https://www.buymeacoffee.com/farukipekcom"
-            target="_blank"
-            className={`flex ${
-              mobileMenuActive === true ? "flex" : "hidden lg:flex"
-            }`}
-            aria-label="Buy Me A Coffee"
-          >
-            <BuyMeACoffee />
-          </Link>
-          {mobileMenuActive && (
-            <div className="absolute right-0 flex justify-end lg:hidden">
-              <Toggle />
-            </div>
-          )}
-        </div>
+        {mobileMenuActive && (
+          <div className="flex justify-end lg:hidden">
+            <Toggle />
+          </div>
+        )}
       </div>
     </header>
   );
