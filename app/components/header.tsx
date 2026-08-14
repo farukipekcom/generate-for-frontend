@@ -19,8 +19,8 @@ export default function Header() {
           : "z-50 bg-white pt-5 dark:bg-secondary lg:p-0"
       } fixed flex w-[calc(100%-40px)] flex-col overflow-hidden rounded-normal lg:h-[calc(100vh-40px)] lg:w-[280px] lg:min-w-[280px]`}
     >
-      <div className="flex h-[calc(100%-0px)] flex-col rounded-normal bg-primary p-4 dark:bg-darkSurface">
-        <div className="flex items-center justify-between">
+      <div className="flex h-full min-h-0 flex-col rounded-normal bg-primary p-4 dark:bg-darkSurface">
+        <div className="flex shrink-0 items-center justify-between">
           <Link
             href="/"
             className="w-max"
@@ -32,16 +32,18 @@ export default function Header() {
           <Menu onchangeActive={onchangeActive} />
         </div>
         {mobileMenuActive && (
-          <div className="mt-8 lg:hidden">
+          <div className="mt-8 shrink-0 lg:hidden">
             <Search mobile={true} />
           </div>
         )}
-        <Navbar
-          mobileMenuActive={mobileMenuActive}
-          onchangeActive={() => setMobileMenuActive(false)}
-        />
+        <div className="no-scrollbar mt-8 min-h-0 flex-1 overflow-y-auto overscroll-y-contain lg:mt-12">
+          <Navbar
+            mobileMenuActive={mobileMenuActive}
+            onchangeActive={() => setMobileMenuActive(false)}
+          />
+        </div>
         {mobileMenuActive && (
-          <div className="flex justify-end lg:hidden">
+          <div className="flex shrink-0 justify-end lg:hidden">
             <Toggle />
           </div>
         )}

@@ -35,7 +35,7 @@ export default function Navbar(Props: Props) {
     <div
       className={`${
         mobileMenuActive === true ? "flex" : "hidden"
-      } mt-8 h-full flex-col items-center gap-y-2 lg:mt-12 lg:flex`}
+      } flex w-full flex-col gap-y-2 lg:flex`}
     >
       <ul className="flex w-full flex-col gap-y-2">
         {pages.map((item) => {

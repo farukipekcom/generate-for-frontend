@@ -45,6 +45,13 @@ body {
 .toggle {
   @apply fill-primary dark:fill-secondary;
 }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 .gff {
   @apply flex w-1/2 items-center p-6;
 }
