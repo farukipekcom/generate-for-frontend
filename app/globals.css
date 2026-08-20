@@ -103,6 +103,40 @@ body {
 .customInput {
   @apply mt-[6px] h-10 rounded-small border border-solid border-inputBorder bg-white pl-3 outline-none focus:border-primary dark:border-inputDarkBorder dark:bg-dark_input_bg focus:dark:border-white;
 }
+.range-input {
+  @apply mt-2 h-2 w-full cursor-pointer appearance-none rounded-full bg-transparent;
+}
+.range-input::-webkit-slider-runnable-track {
+  @apply h-2 rounded-full bg-borderLight;
+}
+.range-input::-webkit-slider-thumb {
+  @apply appearance-none rounded-full border-2 border-white bg-primary;
+  width: 18px;
+  height: 18px;
+  margin-top: -5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.range-input::-moz-range-track {
+  @apply h-2 rounded-full bg-borderLight;
+}
+.range-input::-moz-range-thumb {
+  @apply rounded-full border-2 border-white bg-primary;
+  width: 18px;
+  height: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.dark .range-input::-webkit-slider-runnable-track {
+  background-color: #5c5c5c;
+}
+.dark .range-input::-webkit-slider-thumb {
+  @apply border-darkSurface bg-green;
+}
+.dark .range-input::-moz-range-track {
+  background-color: #5c5c5c;
+}
+.dark .range-input::-moz-range-thumb {
+  @apply border-darkSurface bg-green;
+}
 .warningRed {
   @apply text-red-400;
 }

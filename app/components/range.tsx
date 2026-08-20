@@ -31,7 +31,7 @@ export default function Range(Props: Props) {
         step={step}
         value={value}
         onChange={(event) => onChange(Number(event.target.value))}
-        className="mt-2 h-2 w-full cursor-pointer appearance-none rounded-full bg-borderLight accent-primary dark:bg-border"
+        className="range-input"
       />
     </div>
   );
