@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
 import { siteUrl } from "./lib/site";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 const inter = Inter({ subsets: ["latin"] });
 const title = "Generate for Frontend";
 const description =
@@ -96,6 +98,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </body>
+      <GoogleAnalytics gaId="G-19V83GZSJH" />
     </html>
   );
 }
